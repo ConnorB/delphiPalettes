@@ -35,7 +35,11 @@ the collection:
 print_delphi_palettes("keycaps")
 ```
 
-![](reference/figures/README-quick-look-1.svg)
+![Grid of 34 color palette swatches, one panel per palette in the
+keycaps category, arranged 6 panels by 6 panels. Each panel is labeled
+with its palette name, such as "2600", "dualshot", "nautilus", and
+"vaporwave", above a horizontal strip of solid color
+blocks.](reference/figures/README-quick-look-1.svg)
 
 That’s the `keycaps` category (34 palettes); there are 284 in total
 across ten categories. Leave `category` unset to grid the whole
@@ -62,7 +66,10 @@ draws it:
 print_delphi_palette("mayfair")
 ```
 
-![](reference/figures/README-print-example-1.svg)
+![Horizontal strip of 5 solid color blocks labeled "mayfair" above the
+strip. The colors move from dark navy blue and forest green through a
+deep maroon red to a warm tan and pale
+cream.](reference/figures/README-print-example-1.svg)
 
 Reverse the color order with `direction = -1`, or take a subset with
 `n`:
@@ -87,7 +94,11 @@ continuous
 #> [15] "#C4AF90" "#CFC0A2" "#D9CCB3" "#E2D8C4" "#EBE4D5" "#F5F0E6"
 ```
 
-![](reference/figures/README-continuous-example-1.svg)
+![Horizontal gradient bar showing the mayfair palette interpolated to 20
+continuous color steps. The gradient blends smoothly from dark navy blue
+through forest green and deep maroon red to tan and pale cream, with no
+visible banding between adjacent
+steps.](reference/figures/README-continuous-example-1.svg)
 
 ### Use with ggplot2
 
@@ -114,7 +125,12 @@ ggplot(iris, aes(Species, Sepal.Length, fill = Species)) +
   theme(legend.position = "none")
 ```
 
-![](reference/figures/README-ggplot-discrete-1.svg)
+![Box plot chart. Iris species (setosa, versicolor, virginica) along the
+x-axis, sepal length along the y-axis. Each box is filled with a
+different color from the pride palette — red, orange, and yellow. Median
+sepal length rises from setosa through versicolor to virginica, and the
+spread of values widens across the same
+order.](reference/figures/README-ggplot-discrete-1.svg)
 
 ``` r
 
@@ -124,7 +140,13 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Petal.Length)) +
   theme_minimal()
 ```
 
-![](reference/figures/README-ggplot-continuous-1.svg)
+![Scatter chart. Sepal length along the x-axis, sepal width along the
+y-axis, points colored on a continuous mayfair scale by petal length
+(ranging from 1 to 6.9). Points cluster loosely with no strong linear
+trend between sepal length and width, but color shifts from the dark end
+of the scale at low sepal length values to the pale end at high sepal
+length values, reflecting the strong correlation between petal length
+and sepal length.](reference/figures/README-ggplot-continuous-1.svg)
 
 ### Categories
 
@@ -172,7 +194,12 @@ delphi_palette_colorblind("pinata")
 print_delphi_palettes(colorblind_friendly = TRUE)
 ```
 
-![](reference/figures/README-colorblind-grid-1.svg)
+![Grid of 21 color palette swatches, one panel per palette that passes
+deuteranopia, protanopia, and tritanopia checks, arranged 5 panels by 5
+panels with 4 empty panels at the end. Each panel is labeled with its
+palette name, such as "hokitika", "obsidian", "porcelain", and "escher",
+above a horizontal strip of solid color
+blocks.](reference/figures/README-colorblind-grid-1.svg)
 
 ## Credit
 

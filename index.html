@@ -69,9 +69,12 @@
 <h2 id="a-quick-look">A quick look<a class="anchor" aria-label="anchor" href="#a-quick-look"></a>
 </h2>
 <p><code><a href="reference/print_delphi_palettes.html">print_delphi_palettes()</a></code> draws a grid of palette swatches, one panel per palette. Pass a <code>category</code> or <code>colorblind_friendly = TRUE</code> to see a manageable slice of the collection:</p>
+<!-- alt text is set via out.extra (a raw HTML `alt` attribute) rather than
+     fig-alt, which quarto's gfm renderer doesn't wire up to `alt`:
+     https://github.com/quarto-dev/quarto-cli/issues/12456 -->
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/print_delphi_palettes.html">print_delphi_palettes</a></span><span class="op">(</span><span class="st">"keycaps"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-quick-look-1.svg" style="width:100.0%"></p>
+<p><img src="reference/figures/README-quick-look-1.svg" style="width:100.0%" alt='Grid of 34 color palette swatches, one panel per palette in the keycaps category, arranged 6 panels by 6 panels. Each panel is labeled with its palette name, such as "2600", "dualshot", "nautilus", and "vaporwave", above a horizontal strip of solid color blocks.'></p>
 <p>That’s the <code>keycaps</code> category (34 palettes); there are 284 in total across ten categories. Leave <code>category</code> unset to grid the whole collection at once (a large plot).</p>
 </div>
 <div class="section level2">
@@ -84,7 +87,7 @@
 <p><code><a href="reference/print_delphi_palette.html">print_delphi_palette()</a></code> draws it:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/print_delphi_palette.html">print_delphi_palette</a></span><span class="op">(</span><span class="st">"mayfair"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-print-example-1.svg" style="width:100.0%"></p>
+<p><img src="reference/figures/README-print-example-1.svg" style="width:100.0%" alt='Horizontal strip of 5 solid color blocks labeled "mayfair" above the strip. The colors move from dark navy blue and forest green through a deep maroon red to a warm tan and pale cream.'></p>
 <p>Reverse the color order with <code>direction = -1</code>, or take a subset with <code>n</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/delphi_palette.html">delphi_palette</a></span><span class="op">(</span><span class="st">"grand-budapest"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
@@ -98,7 +101,7 @@
 <span><span class="co">#&gt;  [1] "#1A2634" "#1E2D36" "#223538" "#263C3A" "#2A443C" "#30473C" "#3D3D38"</span></span>
 <span><span class="co">#&gt;  [8] "#4A3434" "#572A30" "#64202C" "#742C35" "#884D4C" "#9C6E62" "#B08E79"</span></span>
 <span><span class="co">#&gt; [15] "#C4AF90" "#CFC0A2" "#D9CCB3" "#E2D8C4" "#EBE4D5" "#F5F0E6"</span></span></code></pre></div>
-<p><img src="reference/figures/README-continuous-example-1.svg" style="width:100.0%"></p>
+<p><img src="reference/figures/README-continuous-example-1.svg" style="width:100.0%" alt="Horizontal gradient bar showing the mayfair palette interpolated to 20 continuous color steps. The gradient blends smoothly from dark navy blue through forest green and deep maroon red to tan and pale cream, with no visible banding between adjacent steps."></p>
 <div class="section level3">
 <h3 id="use-with-ggplot2">Use with ggplot2<a class="anchor" aria-label="anchor" href="#use-with-ggplot2"></a>
 </h3>
@@ -111,13 +114,13 @@
 <span>  <span class="fu"><a href="reference/scale_delphi.html">scale_fill_delphi_d</a></span><span class="op">(</span><span class="st">"pride"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-ggplot-discrete-1.svg" style="width:100.0%"></p>
+<p><img src="reference/figures/README-ggplot-discrete-1.svg" style="width:100.0%" alt="Box plot chart. Iris species (setosa, versicolor, virginica) along the x-axis, sepal length along the y-axis. Each box is filled with a different color from the pride palette — red, orange, and yellow. Median sepal length rises from setosa through versicolor to virginica, and the spread of values widens across the same order."></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, color <span class="op">=</span> <span class="va">Petal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/scale_delphi.html">scale_color_delphi_c</a></span><span class="op">(</span><span class="st">"mayfair"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-ggplot-continuous-1.svg" style="width:100.0%"></p>
+<p><img src="reference/figures/README-ggplot-continuous-1.svg" style="width:100.0%" alt="Scatter chart. Sepal length along the x-axis, sepal width along the y-axis, points colored on a continuous mayfair scale by petal length (ranging from 1 to 6.9). Points cluster loosely with no strong linear trend between sepal length and width, but color shifts from the dark end of the scale at low sepal length values to the pale end at high sepal length values, reflecting the strong correlation between petal length and sepal length."></p>
 </div>
 <div class="section level3">
 <h3 id="categories">Categories<a class="anchor" aria-label="anchor" href="#categories"></a>
@@ -146,7 +149,7 @@
 <span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/print_delphi_palettes.html">print_delphi_palettes</a></span><span class="op">(</span>colorblind_friendly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-colorblind-grid-1.svg" style="width:100.0%"></p>
+<p><img src="reference/figures/README-colorblind-grid-1.svg" style="width:100.0%" alt='Grid of 21 color palette swatches, one panel per palette that passes deuteranopia, protanopia, and tritanopia checks, arranged 5 panels by 5 panels with 4 empty panels at the end. Each panel is labeled with its palette name, such as "hokitika", "obsidian", "porcelain", and "escher", above a horizontal strip of solid color blocks.'></p>
 </div>
 </div>
 <div class="section level2">
