@@ -7,20 +7,20 @@
 delphi_palettes(category = NULL, colorblind_friendly = FALSE)
 }
 \arguments{
-\item{category}{An optional palette category. One of \code{classic}, \code{nature},
+\item{category}{An optional category. It must be one of \code{classic}, \code{nature},
 \code{keycaps}, \code{vintage}, \code{modern}, \code{bold}, \code{soft}, \code{monochrome}, \code{seasonal},
 or \code{artistic}.}
 
-\item{colorblind_friendly}{If \code{TRUE}, only return palettes that are
-colorblind-friendly. See \code{\link[=delphi_palette_colorblind]{delphi_palette_colorblind()}} for what that
-means.}
+\item{colorblind_friendly}{If \code{TRUE}, returns only palettes that pass
+\code{\link[=delphi_palette_colorblind]{delphi_palette_colorblind()}}.}
 }
 \value{
-A named list of character vectors containing hexadecimal colors.
+A named list. Each element is a character vector of hexadecimal
+colors.
 }
 \description{
-Return the curated Delphi palette collection. Palette names use lowercase
-hyphenated form, such as \code{mayfair} and \code{perito-moreno}.
+Returns the Delphi palette collection. Palette names use lowercase letters
+and hyphens. For example, use \code{mayfair} or \code{perito-moreno}.
 }
 \examples{
 delphi_palettes("nature")

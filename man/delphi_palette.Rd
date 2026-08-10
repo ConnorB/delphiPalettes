@@ -7,27 +7,24 @@
 delphi_palette(name = "mayfair", n = NULL, type = "discrete", direction = 1)
 }
 \arguments{
-\item{name}{A single palette name, as returned by
-\code{names(delphi_palettes())}. Defaults to \code{"mayfair"}, the first palette.}
+\item{name}{A single palette name. Use \code{\link[=delphi_palettes]{delphi_palettes()}} to get palette
+names. The default is \code{"mayfair"}.}
 
-\item{n}{Number of colors to return. Defaults to the palette's full
-length; required when \code{type = "continuous"}.}
+\item{n}{The number of colors to return. The default returns all colors.
+You must set \code{n} for \code{type = "continuous"}.}
 
-\item{type}{Whether to return the palette's discrete colors or an
-interpolated continuous palette.}
+\item{type}{The palette type. Use \code{"discrete"} for stored colors. Use
+\code{"continuous"} for interpolated colors.}
 
-\item{direction}{Color order: \code{1} retains the original order and \code{-1}
-reverses it. Applied to the full palette before \code{n} selects a subset, so
-\code{n} colors with \code{direction = -1} are the \emph{last} \code{n} colors of the
-original order, reversed.}
+\item{direction}{The color order. Use \code{1} for the stored order. Use \code{-1} to
+reverse the stored order before this function selects \code{n} colors.}
 }
 \value{
 A character vector of hexadecimal colors.
 }
 \description{
-Retrieve a palette by name. The first palette, \code{mayfair}, is used by
-default. Set \code{type = "continuous"} and supply \code{n} to interpolate a palette
-to an arbitrary number of colors.
+Returns colors from one Delphi palette. The default palette is \code{mayfair}.
+Set \code{type = "continuous"} and \code{n} to interpolate colors.
 }
 \examples{
 delphi_palette("mayfair")

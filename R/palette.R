@@ -1,19 +1,16 @@
 #' Get a Delphi palette
 #'
-#' Retrieve a palette by name. The first palette, `mayfair`, is used by
-#' default. Set `type = "continuous"` and supply `n` to interpolate a palette
-#' to an arbitrary number of colors.
+#' Returns colors from one Delphi palette. The default palette is `mayfair`.
+#' Set `type = "continuous"` and `n` to interpolate colors.
 #'
-#' @param name A single palette name, as returned by
-#'   `names(delphi_palettes())`. Defaults to `"mayfair"`, the first palette.
-#' @param n Number of colors to return. Defaults to the palette's full
-#'   length; required when `type = "continuous"`.
-#' @param type Whether to return the palette's discrete colors or an
-#'   interpolated continuous palette.
-#' @param direction Color order: `1` retains the original order and `-1`
-#'   reverses it. Applied to the full palette before `n` selects a subset, so
-#'   `n` colors with `direction = -1` are the *last* `n` colors of the
-#'   original order, reversed.
+#' @param name A single palette name. Use [delphi_palettes()] to get palette
+#'   names. The default is `"mayfair"`.
+#' @param n The number of colors to return. The default returns all colors.
+#'   You must set `n` for `type = "continuous"`.
+#' @param type The palette type. Use `"discrete"` for stored colors. Use
+#'   `"continuous"` for interpolated colors.
+#' @param direction The color order. Use `1` for the stored order. Use `-1` to
+#'   reverse the stored order before this function selects `n` colors.
 #' @return A character vector of hexadecimal colors.
 #' @export
 #' @examples
@@ -36,8 +33,8 @@ delphi_palette <- function(
   ) {
     cli::cli_abort(
       c(
-        "{.arg type} must be either {.val discrete} or {.val continuous}.",
-        "i" = "See {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} for palette options."
+        "{.arg type} must be {.val discrete} or {.val continuous}.",
+        "i" = "Read {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} for palette options."
       )
     )
   }
@@ -45,15 +42,13 @@ delphi_palette <- function(
   if (type == "continuous" && is.null(n)) {
     cli::cli_abort(
       c(
-        "{.arg n} is required when {.code type = \"continuous\"}.",
-        "i" = "See {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} for palette options."
+        "{.arg n} is required for {.code type = \"continuous\"}.",
+        "i" = "Read {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} for palette options."
       )
     )
   }
 
   direction <- .delphi_palette_direction(direction)
-  palettes <- delphi_palettes()
-
   colors <- palettes[[name]]
   if (direction == -1) {
     colors <- rev(colors)
@@ -70,7 +65,7 @@ delphi_palette <- function(
       cli::cli_abort(
         c(
           "{.arg n} must be a positive whole number.",
-          "i" = "See {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} for palette options."
+          "i" = "Read {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} for palette options."
         )
       )
     }
@@ -80,15 +75,14 @@ delphi_palette <- function(
       if (n > length(colors)) {
         cli::cli_abort(
           c(
-            "Palette {.val {name}} has only {length(colors)} color{?s}.",
-            "i" = "See {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} for continuous interpolation."
+            "Palette {.val {name}} contains only {length(colors)} color{?s}.",
+            "i" = "Read {.help [{.fun delphiPalettes::delphi_palette}](delphiPalettes::delphi_palette)} to interpolate colors."
           )
         )
       }
       colors <- colors[seq_len(n)]
     } else {
-      has_alpha <- any(nchar(colors) == 9L)
-      colors <- grDevices::colorRampPalette(colors, alpha = has_alpha)(n)
+      colors <- .delphi_continuous_palette(colors, n)
     }
   }
 

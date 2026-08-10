@@ -1,23 +1,17 @@
 #' Delphi palette scales for ggplot2
 #'
-#' Discrete and continuous color/fill scales for \pkg{ggplot2}, built from a
-#' Delphi palette. `scale_color_delphi_d()` and `scale_fill_delphi_d()` map a
-#' discrete variable to a palette's colors, extending the palette by
-#' interpolation if there are more levels than the palette has colors.
-#' `scale_color_delphi_c()` and `scale_fill_delphi_c()` map a continuous
-#' variable through the palette, interpolating between its colors.
-#' `scale_colour_delphi_d()` and `scale_colour_delphi_c()` are aliases for the
-#' `scale_color_delphi_*()` functions.
+#' Uses Delphi palettes in [ggplot2] scales. The discrete scales assign colors
+#' to factor levels. Extra factor levels cause the scales to interpolate colors.
+#' The continuous scales assign colors to numeric values.
+#' [scale_colour_delphi_d()] and [scale_colour_delphi_c()] are aliases.
 #'
-#' @param name A single palette name, as returned by
-#'   `names(delphi_palettes())`. Defaults to `"mayfair"`, the first palette.
-#' @param direction Color order: `1` retains the original order and `-1`
-#'   reverses it.
-#' @param ... Passed on to `ggplot2::discrete_scale()` (for the `_d()`
-#'   scales) or `ggplot2::scale_color_gradientn()` / `ggplot2::scale_fill_gradientn()`
-#'   (for the `_c()` scales). This package's own `name` argument occupies the
-#'   slot ggplot2 usually reserves for the scale title; set a legend title
-#'   with `ggplot2::labs()` instead.
+#' @param name A single palette name. Use [delphi_palettes()] to get palette
+#'   names. The default is `"mayfair"`.
+#' @param direction The color order. Use `1` for the stored order. Use `-1` to
+#'   reverse the stored order.
+#' @param ... Arguments for [ggplot2::discrete_scale()] or
+#'   [ggplot2::scale_color_gradientn()]. Use [ggplot2::labs()] to set the
+#'   legend title.
 #' @return A ggplot2 `Scale` object.
 #' @examples
 #' if (requireNamespace("ggplot2", quietly = TRUE)) {
@@ -43,7 +37,7 @@ scale_color_delphi_d <- function(name = "mayfair", direction = 1, ...) {
 
   ggplot2::discrete_scale(
     aesthetics = "color",
-    palette = .delphi_discrete_palette(name, direction),
+    palette = .delphi_discrete_palette(palettes[[name]], direction),
     ...
   )
 }
@@ -57,7 +51,7 @@ scale_fill_delphi_d <- function(name = "mayfair", direction = 1, ...) {
 
   ggplot2::discrete_scale(
     aesthetics = "fill",
-    palette = .delphi_discrete_palette(name, direction),
+    palette = .delphi_discrete_palette(palettes[[name]], direction),
     ...
   )
 }
@@ -67,7 +61,11 @@ scale_fill_delphi_d <- function(name = "mayfair", direction = 1, ...) {
 scale_color_delphi_c <- function(name = "mayfair", direction = 1, ...) {
   rlang::check_installed("ggplot2")
   name <- .delphi_palette_name(name)
-  colors <- delphi_palette(name = name, direction = direction)
+  direction <- .delphi_palette_direction(direction)
+  colors <- palettes[[name]]
+  if (direction == -1) {
+    colors <- rev(colors)
+  }
 
   ggplot2::scale_color_gradientn(colors = colors, ...)
 }
@@ -77,7 +75,11 @@ scale_color_delphi_c <- function(name = "mayfair", direction = 1, ...) {
 scale_fill_delphi_c <- function(name = "mayfair", direction = 1, ...) {
   rlang::check_installed("ggplot2")
   name <- .delphi_palette_name(name)
-  colors <- delphi_palette(name = name, direction = direction)
+  direction <- .delphi_palette_direction(direction)
+  colors <- palettes[[name]]
+  if (direction == -1) {
+    colors <- rev(colors)
+  }
 
   ggplot2::scale_fill_gradientn(colors = colors, ...)
 }
@@ -90,14 +92,16 @@ scale_colour_delphi_d <- scale_color_delphi_d
 #' @export
 scale_colour_delphi_c <- scale_color_delphi_c
 
-.delphi_discrete_palette <- function(name, direction) {
-  full <- delphi_palettes()[[name]]
+.delphi_discrete_palette <- function(colors, direction) {
+  if (direction == -1) {
+    colors <- rev(colors)
+  }
 
   function(n) {
-    if (n <= length(full)) {
-      delphi_palette(name = name, n = n, direction = direction)
+    if (n <= length(colors)) {
+      colors[seq_len(n)]
     } else {
-      delphi_palette(name = name, n = n, type = "continuous", direction = direction)
+      .delphi_continuous_palette(colors, n)
     }
   }
 }

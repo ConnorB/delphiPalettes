@@ -60,7 +60,11 @@ test_that("delphi_palettes(colorblind_friendly = TRUE) filters consistently with
   expect_gt(length(friendly_palettes), 0)
   expect_lt(length(friendly_palettes), length(all_palettes))
 
-  is_friendly <- vapply(names(all_palettes), delphi_palette_colorblind, logical(1))
+  is_friendly <- vapply(
+    names(all_palettes),
+    delphi_palette_colorblind,
+    logical(1)
+  )
   expect_setequal(names(friendly_palettes), names(all_palettes)[is_friendly])
 
   expect_snapshot(error = TRUE, delphi_palettes(colorblind_friendly = "yes"))
@@ -70,7 +74,11 @@ test_that("colorblind_friendly combines with category filtering", {
   friendly_nature <- delphi_palettes("nature", colorblind_friendly = TRUE)
 
   expect_true(all(names(friendly_nature) %in% names(delphi_palettes("nature"))))
-  expect_true(all(vapply(names(friendly_nature), delphi_palette_colorblind, logical(1))))
+  expect_true(all(vapply(
+    names(friendly_nature),
+    delphi_palette_colorblind,
+    logical(1)
+  )))
 })
 
 test_that("every palette has a colorblind-friendliness verdict", {
@@ -146,7 +154,9 @@ test_that("direction and continuous interpolation combine sensibly", {
   # `colorRampPalette()`'s interpolation isn't perfectly symmetric under
   # reversal (off-by-one rounding in individual RGB channels), so compare
   # with a small tolerance rather than exact equality.
-  diff <- abs(t(grDevices::col2rgb(reversed)) - t(grDevices::col2rgb(rev(forward))))
+  diff <- abs(
+    t(grDevices::col2rgb(reversed)) - t(grDevices::col2rgb(rev(forward)))
+  )
   expect_true(max(diff) <= 1)
 })
 
@@ -178,6 +188,36 @@ test_that("print_delphi_palettes draws a grid and returns the palette names", {
   before <- graphics::par("mfrow")
   print_delphi_palettes("soft", direction = -1)
   expect_identical(graphics::par("mfrow"), before)
+})
+
+test_that("print_delphi_palettes splits the full collection by category", {
+  pages <- delphiPalettes:::.delphi_palette_pages(
+    delphi_palettes(),
+    NULL,
+    paginate = TRUE
+  )
+
+  expect_identical(names(pages), known_categories)
+  expect_identical(
+    unname(unlist(lapply(pages, names))),
+    names(delphi_palettes())
+  )
+  expect_identical(
+    delphiPalettes:::.delphi_palette_pages(
+      delphi_palettes("nature"),
+      "nature",
+      paginate = TRUE
+    ),
+    list(nature = delphi_palettes("nature"))
+  )
+  expect_identical(
+    delphiPalettes:::.delphi_palette_pages(
+      delphi_palettes(colorblind_friendly = TRUE),
+      NULL,
+      paginate = FALSE
+    ),
+    list(delphi_palettes(colorblind_friendly = TRUE))
+  )
 })
 
 test_that("print_delphi_palettes errors when no palette matches the filters", {

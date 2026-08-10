@@ -1,15 +1,12 @@
-#' Check whether a palette is colorblind-friendly
+#' Report palette color vision support
 #'
-#' Checks whether a palette is colorblind-friendly. A palette is
-#' colorblind-friendly when every color pair distinguishable in the
-#' original palette remains distinguishable under simulated deuteranopia,
-#' protanopia, and tritanopia, as determined by the \pkg{colorblindcheck}
-#' package. Verdicts are precomputed and shipped with the package; see
-#' `data-raw/colorblind-friendly.R` in the source repository to see how they
-#' were generated or to regenerate them after a palette's colors change.
+#' Reports whether a palette keeps every distinct color pair under simulated
+#' deuteranopia, protanopia, and tritanopia. The package stores this result for
+#' each palette. [colorblindcheck::palette_check()] creates the results in
+#' `data-raw/palettes.R`.
 #'
-#' @param name A single palette name, as returned by
-#'   `names(delphi_palettes())`.
+#' @param name A single palette name. Use [delphi_palettes()] to get palette
+#'   names.
 #' @return `TRUE` or `FALSE`.
 #' @export
 #' @examples
@@ -17,6 +14,5 @@
 #' delphi_palette_colorblind("pinata")
 delphi_palette_colorblind <- function(name) {
   name <- .delphi_palette_name(name)
-  name %in% names(delphi_palettes(colorblind_friendly = TRUE))
+  unname(colorblind_friendly_lookup[[name]])
 }
-

@@ -778,6 +778,20 @@
 <polygon points='316.81,357.28 316.81,313.17 332.01,313.17 332.01,357.28 ' style='stroke-width: 0.75; stroke: none; fill: #1A1A1A;' />
 </g>
 <defs>
+  <clipPath id='cpMzM2Ljk1fDQxOS4wNXwzMTEuNDB8MzU5LjA1'>
+    <rect x='336.95' y='311.40' width='82.10' height='47.64' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzM2Ljk1fDQxOS4wNXwzMTEuNDB8MzU5LjA1)'>
+</g>
+<defs>
+  <clipPath id='cpNDIwLjk1fDUwMy4wNXwzMTEuNDB8MzU5LjA1'>
+    <rect x='420.95' y='311.40' width='82.10' height='47.64' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNDIwLjk1fDUwMy4wNXwzMTEuNDB8MzU5LjA1)'>
+</g>
+<defs>
   <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
     <rect x='59.04' y='59.04' width='414.72' height='227.52' />
   </clipPath>

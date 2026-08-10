@@ -7,28 +7,23 @@ Authors@R: c(
     person("Ruby Morgan", "Voigt", role = "dtc",
            comment = "Original palette designs ported from https://delphi.tools (GitHub: 1612elphi)")
   )
-Description: A collection of color palettes for data visualisation, ported
-    from the palette collection at 'delphi.tools' <https://delphi.tools>,
-    a suite of privacy-respecting, browser-based design tools created by
-    delphi <https://github.com/1612elphi/delphitools>. Palettes are
-    organised into categories such as classic, nature, keycaps, vintage,
-    modern, bold, soft, monochrome, seasonal, and artistic, and can be
-    returned as discrete color vectors or interpolated to an arbitrary
-    number of colors. Includes a function to identify which palettes
-    remain distinguishable under simulated color vision deficiencies.
+Description: Provides color palettes from the collection at
+    [delphi.tools](https://delphi.tools), a suite of privacy-respecting,
+    browser-based design tools. The package groups palettes by category.
+    It returns palette colors or interpolated colors. It also reports
+    whether a palette keeps distinct colors under simulated color vision
+    differences.
 License: MIT + file LICENSE
-URL: https://github.com/ConnorB/delphiPalettes, https://connorb.github.io/delphiPalettes/
+URL: https://github.com/ConnorB/delphiPalettes,
+    https://connorb.github.io/delphiPalettes/
 BugReports: https://github.com/ConnorB/delphiPalettes/issues
 Depends:
     R (>= 3.5)
 Imports:
     cli,
-    glue,
     graphics,
     grDevices,
-    lifecycle,
-    rlang,
-    withr
+    rlang
 Suggests:
     colorblindcheck,
     ggplot2,

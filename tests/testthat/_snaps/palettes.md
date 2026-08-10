@@ -4,8 +4,8 @@
       delphi_palettes(1)
     Condition
       Error in `delphi_palettes()`:
-      ! `category` must be a single, non-missing character string.
-      i See `delphiPalettes::delphi_palettes()` (`?delphiPalettes::delphi_palettes()`) for available categories.
+      ! `category` must be one character string. It cannot be missing.
+      i Read `delphiPalettes::delphi_palettes()` (`?delphiPalettes::delphi_palettes()`) for available categories.
 
 ---
 
@@ -15,7 +15,7 @@
       Error in `delphi_palettes()`:
       ! Unknown palette category "unknown".
       i Available categories: "classic", "nature", "keycaps", "vintage", "modern", "bold", "soft", "monochrome", "seasonal", and "artistic".
-      i See `delphiPalettes::delphi_palettes()` (`?delphiPalettes::delphi_palettes()`) for usage.
+      i Read `delphiPalettes::delphi_palettes()` (`?delphiPalettes::delphi_palettes()`) for details.
 
 # delphi_palettes(colorblind_friendly = TRUE) filters consistently with delphi_palette_colorblind()
 
@@ -23,8 +23,8 @@
       delphi_palettes(colorblind_friendly = "yes")
     Condition
       Error in `delphi_palettes()`:
-      ! `colorblind_friendly` must be either "TRUE" or "FALSE".
-      i See `delphiPalettes::delphi_palettes()` (`?delphiPalettes::delphi_palettes()`) for usage.
+      ! `colorblind_friendly` must be "TRUE" or "FALSE".
+      i Read `delphiPalettes::delphi_palettes()` (`?delphiPalettes::delphi_palettes()`) for details.
 
 # delphi_palette_colorblind reports known friendly and unfriendly palettes
 
@@ -32,7 +32,7 @@
       delphi_palette_colorblind("unknown")
     Condition
       Error in `delphi_palette_colorblind()`:
-      ! `name` must be a valid Delphi palette name.
+      ! `name` must be the name of a Delphi palette.
       i Run `delphi_palettes()` for available names.
 
 # delphi_palette retrieves and interpolates palettes
@@ -41,7 +41,7 @@
       delphi_palette(1)
     Condition
       Error in `delphi_palette()`:
-      ! `name` must be a valid Delphi palette name.
+      ! `name` must be the name of a Delphi palette.
       i Run `delphi_palettes()` for available names.
 
 ---
@@ -50,7 +50,7 @@
       delphi_palette("unknown")
     Condition
       Error in `delphi_palette()`:
-      ! `name` must be a valid Delphi palette name.
+      ! `name` must be the name of a Delphi palette.
       i Run `delphi_palettes()` for available names.
 
 ---
@@ -59,8 +59,8 @@
       delphi_palette("pride", n = 7)
     Condition
       Error in `delphi_palette()`:
-      ! Palette "pride" has only 6 colors.
-      i See `delphiPalettes::delphi_palette()` (`?delphiPalettes::delphi_palette()`) for continuous interpolation.
+      ! Palette "pride" contains only 6 colors.
+      i Read `delphiPalettes::delphi_palette()` (`?delphiPalettes::delphi_palette()`) to interpolate colors.
 
 ---
 
@@ -68,8 +68,8 @@
       delphi_palette(direction = 0)
     Condition
       Error in `delphi_palette()`:
-      ! `direction` must be either "1" or "-1".
-      i See `delphi_palette()` (`?delphiPalettes::delphi_palette()`) for palette options.
+      ! `direction` must be "1" or "-1".
+      i Read `delphi_palette()` (`?delphiPalettes::delphi_palette()`) for palette options.
 
 ---
 
@@ -77,8 +77,8 @@
       delphi_palette(type = "other")
     Condition
       Error in `delphi_palette()`:
-      ! `type` must be either "discrete" or "continuous".
-      i See `delphiPalettes::delphi_palette()` (`?delphiPalettes::delphi_palette()`) for palette options.
+      ! `type` must be "discrete" or "continuous".
+      i Read `delphiPalettes::delphi_palette()` (`?delphiPalettes::delphi_palette()`) for palette options.
 
 # continuous type requires n and preserves alpha
 
@@ -86,8 +86,8 @@
       delphi_palette("mayfair", type = "continuous")
     Condition
       Error in `delphi_palette()`:
-      ! `n` is required when `type = "continuous"`.
-      i See `delphiPalettes::delphi_palette()` (`?delphiPalettes::delphi_palette()`) for palette options.
+      ! `n` is required for `type = "continuous"`.
+      i Read `delphiPalettes::delphi_palette()` (`?delphiPalettes::delphi_palette()`) for palette options.
 
 # print_delphi_palettes errors when no palette matches the filters
 
@@ -95,5 +95,5 @@
       print_delphi_palettes("classic", colorblind_friendly = TRUE)
     Condition
       Error in `print_delphi_palettes()`:
-      ! No palettes match `category` and `colorblind_friendly`.
+      ! No palette matches `category` and `colorblind_friendly`.
 

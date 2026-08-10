@@ -1,15 +1,15 @@
 #' Delphi palette collection
 #'
-#' Return the curated Delphi palette collection. Palette names use lowercase
-#' hyphenated form, such as `mayfair` and `perito-moreno`.
+#' Returns the Delphi palette collection. Palette names use lowercase letters
+#' and hyphens. For example, use `mayfair` or `perito-moreno`.
 #'
-#' @param category An optional palette category. One of `classic`, `nature`,
+#' @param category An optional category. It must be one of `classic`, `nature`,
 #'   `keycaps`, `vintage`, `modern`, `bold`, `soft`, `monochrome`, `seasonal`,
 #'   or `artistic`.
-#' @param colorblind_friendly If `TRUE`, only return palettes that are
-#'   colorblind-friendly. See [delphi_palette_colorblind()] for what that
-#'   means.
-#' @return A named list of character vectors containing hexadecimal colors.
+#' @param colorblind_friendly If `TRUE`, returns only palettes that pass
+#'   [delphi_palette_colorblind()].
+#' @return A named list. Each element is a character vector of hexadecimal
+#'   colors.
 #' @export
 #' @examples
 #' delphi_palettes("nature")
@@ -22,8 +22,8 @@ delphi_palettes <- function(category = NULL, colorblind_friendly = FALSE) {
   ) {
     cli::cli_abort(
       c(
-        "{.arg colorblind_friendly} must be either {.val TRUE} or {.val FALSE}.",
-        "i" = "See {.help [{.fun delphiPalettes::delphi_palettes}](delphiPalettes::delphi_palettes)} for usage."
+        "{.arg colorblind_friendly} must be {.val TRUE} or {.val FALSE}.",
+        "i" = "Read {.help [{.fun delphiPalettes::delphi_palettes}](delphiPalettes::delphi_palettes)} for details."
       )
     )
   }
@@ -40,8 +40,8 @@ delphi_palettes <- function(category = NULL, colorblind_friendly = FALSE) {
   if (!is.character(category) || length(category) != 1L || is.na(category)) {
     cli::cli_abort(
       c(
-        "{.arg category} must be a single, non-missing character string.",
-        "i" = "See {.help [{.fun delphiPalettes::delphi_palettes}](delphiPalettes::delphi_palettes)} for available categories."
+        "{.arg category} must be one character string. It cannot be missing.",
+        "i" = "Read {.help [{.fun delphiPalettes::delphi_palettes}](delphiPalettes::delphi_palettes)} for available categories."
       )
     )
   }
@@ -52,7 +52,7 @@ delphi_palettes <- function(category = NULL, colorblind_friendly = FALSE) {
       c(
         "Unknown palette category {.val {category}}.",
         "i" = "Available categories: {.val {available}}.",
-        "i" = "See {.help [{.fun delphiPalettes::delphi_palettes}](delphiPalettes::delphi_palettes)} for usage."
+        "i" = "Read {.help [{.fun delphiPalettes::delphi_palettes}](delphiPalettes::delphi_palettes)} for details."
       )
     )
   }

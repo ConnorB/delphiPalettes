@@ -1,6 +1,7 @@
 url: https://connorb.github.io/delphiPalettes/
 template:
   bootstrap: 5
+  light-switch: true
   bslib:
     base_font: {google: "Roboto"}
     heading_font: {google: "Roboto Slab"}
@@ -8,3 +9,5 @@ template:
   bootswatch: darkly
 deploy:
   install_metadata: true
+development:
+  mode: auto

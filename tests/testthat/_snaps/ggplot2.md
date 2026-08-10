@@ -4,7 +4,7 @@
       scale_fill_delphi_d("unknown")
     Condition
       Error in `scale_fill_delphi_d()`:
-      ! `name` must be a valid Delphi palette name.
+      ! `name` must be the name of a Delphi palette.
       i Run `delphi_palettes()` for available names.
 
 ---
@@ -13,6 +13,6 @@
       scale_color_delphi_c("unknown")
     Condition
       Error in `scale_color_delphi_c()`:
-      ! `name` must be a valid Delphi palette name.
+      ! `name` must be the name of a Delphi palette.
       i Run `delphi_palettes()` for available names.
 

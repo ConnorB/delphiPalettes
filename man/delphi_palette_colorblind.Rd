@@ -2,25 +2,22 @@
 % Please edit documentation in R/colorblind.R
 \name{delphi_palette_colorblind}
 \alias{delphi_palette_colorblind}
-\title{Check whether a palette is colorblind-friendly}
+\title{Report palette color vision support}
 \usage{
 delphi_palette_colorblind(name)
 }
 \arguments{
-\item{name}{A single palette name, as returned by
-\code{names(delphi_palettes())}.}
+\item{name}{A single palette name. Use \code{\link[=delphi_palettes]{delphi_palettes()}} to get palette
+names.}
 }
 \value{
 \code{TRUE} or \code{FALSE}.
 }
 \description{
-Checks whether a palette is colorblind-friendly. A palette is
-colorblind-friendly when every color pair distinguishable in the
-original palette remains distinguishable under simulated deuteranopia,
-protanopia, and tritanopia, as determined by the \pkg{colorblindcheck}
-package. Verdicts are precomputed and shipped with the package; see
-\code{data-raw/colorblind-friendly.R} in the source repository to see how they
-were generated or to regenerate them after a palette's colors change.
+Reports whether a palette keeps every distinct color pair under simulated
+deuteranopia, protanopia, and tritanopia. The package stores this result for
+each palette. \code{\link[colorblindcheck:palette_check]{colorblindcheck::palette_check()}} creates the results in
+\code{data-raw/palettes.R}.
 }
 \examples{
 delphi_palette_colorblind("dove")

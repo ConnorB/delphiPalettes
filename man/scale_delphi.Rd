@@ -23,30 +23,24 @@ scale_colour_delphi_d(name = "mayfair", direction = 1, ...)
 scale_colour_delphi_c(name = "mayfair", direction = 1, ...)
 }
 \arguments{
-\item{name}{A single palette name, as returned by
-\code{names(delphi_palettes())}. Defaults to \code{"mayfair"}, the first palette.}
+\item{name}{A single palette name. Use \code{\link[=delphi_palettes]{delphi_palettes()}} to get palette
+names. The default is \code{"mayfair"}.}
 
-\item{direction}{Color order: \code{1} retains the original order and \code{-1}
-reverses it.}
+\item{direction}{The color order. Use \code{1} for the stored order. Use \code{-1} to
+reverse the stored order.}
 
-\item{...}{Passed on to \code{ggplot2::discrete_scale()} (for the \verb{_d()}
-scales) or \code{ggplot2::scale_color_gradientn()} / \code{ggplot2::scale_fill_gradientn()}
-(for the \verb{_c()} scales). This package's own \code{name} argument occupies the
-slot ggplot2 usually reserves for the scale title; set a legend title
-with \code{ggplot2::labs()} instead.}
+\item{...}{Arguments for \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}} or
+\code{\link[ggplot2:scale_color_gradientn]{ggplot2::scale_color_gradientn()}}. Use \code{\link[ggplot2:labs]{ggplot2::labs()}} to set the
+legend title.}
 }
 \value{
 A ggplot2 \code{Scale} object.
 }
 \description{
-Discrete and continuous color/fill scales for \pkg{ggplot2}, built from a
-Delphi palette. \code{scale_color_delphi_d()} and \code{scale_fill_delphi_d()} map a
-discrete variable to a palette's colors, extending the palette by
-interpolation if there are more levels than the palette has colors.
-\code{scale_color_delphi_c()} and \code{scale_fill_delphi_c()} map a continuous
-variable through the palette, interpolating between its colors.
-\code{scale_colour_delphi_d()} and \code{scale_colour_delphi_c()} are aliases for the
-\verb{scale_color_delphi_*()} functions.
+Uses Delphi palettes in \link[ggplot2:ggplot2]{ggplot2} scales. The discrete scales assign colors
+to factor levels. Extra factor levels cause the scales to interpolate colors.
+The continuous scales assign colors to numeric values.
+\code{\link[=scale_colour_delphi_d]{scale_colour_delphi_d()}} and \code{\link[=scale_colour_delphi_c]{scale_colour_delphi_c()}} are aliases.
 }
 \examples{
 if (requireNamespace("ggplot2", quietly = TRUE)) {

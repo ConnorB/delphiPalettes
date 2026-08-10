@@ -1,10 +1,11 @@
 #' Print a Delphi palette
 #'
-#' Draw a palette with its name above the color swatches. The colors are also
-#' returned invisibly.
+#' Draws one palette with its name above the color swatches. Returns the colors
+#' invisibly.
 #'
 #' @inheritParams delphi_palette
-#' @return The selected hexadecimal colors, invisibly.
+#' @return The selected hexadecimal colors. The function returns them
+#'   invisibly.
 #' @export
 #' @importFrom grDevices rgb
 #' @importFrom graphics image par rect text
@@ -13,7 +14,11 @@
 #' print_delphi_palette("pride", direction = -1)
 print_delphi_palette <- function(name = "mayfair", direction = 1) {
   palette_name <- .delphi_palette_name(name)
-  colors <- delphi_palette(name = palette_name, direction = direction)
+  direction <- .delphi_palette_direction(direction)
+  colors <- palettes[[palette_name]]
+  if (direction == -1) {
+    colors <- rev(colors)
+  }
   n <- length(colors)
   old <- par(mar = c(0.5, 0.5, 0.5, 0.5))
   on.exit(par(old), add = TRUE)
@@ -43,16 +48,18 @@ print_delphi_palette <- function(name = "mayfair", direction = 1) {
 
 #' Display a grid of Delphi palettes
 #'
-#' Draws a grid of palette swatches, one panel per palette, for browsing the
-#' collection -- or a filtered subset of it -- at a glance.
+#' Draws one panel for each palette. You can limit the result by category or
+#' color vision support. With the default filters, each category uses one
+#' graphics page.
 #'
 #' @inheritParams delphi_palettes
-#' @param direction Color order: `1` retains the original order and `-1`
-#'   reverses it. Applied to every palette shown.
-#' @return The names of the displayed palettes, invisibly.
+#' @param direction The color order. Use `1` for the stored order. Use `-1` to
+#'   reverse every palette.
+#' @return The names of the shown palettes. The function returns them
+#'   invisibly.
 #' @export
 #' @importFrom grDevices n2mfrow
-#' @importFrom graphics layout par plot polygon
+#' @importFrom graphics layout par plot plot.new polygon
 #' @examples
 #' print_delphi_palettes("keycaps")
 #' print_delphi_palettes(colorblind_friendly = TRUE)
@@ -68,7 +75,7 @@ print_delphi_palettes <- function(
 
   if (length(palettes) == 0L) {
     cli::cli_abort(
-      "No palettes match {.arg category} and {.arg colorblind_friendly}."
+      "No palette matches {.arg category} and {.arg colorblind_friendly}."
     )
   }
 
@@ -77,11 +84,46 @@ print_delphi_palettes <- function(
   old <- par(no.readonly = TRUE)
   on.exit(par(old), add = TRUE)
 
-  grid <- n2mfrow(length(palettes))
-  layout(matrix(seq_len(prod(grid)), nrow = grid[1], ncol = grid[2], byrow = TRUE))
+  pages <- .delphi_palette_pages(
+    palettes,
+    category,
+    paginate = !colorblind_friendly
+  )
+  for (page in pages) {
+    .delphi_print_palette_page(page, direction)
+  }
 
-  for (name in names(palettes)) {
-    colors <- palettes[[name]]
+  invisible(names(palettes))
+}
+
+.delphi_palette_pages <- function(palette_data, category, paginate) {
+  if (!is.null(category) || !paginate) {
+    return(stats::setNames(list(palette_data), category))
+  }
+
+  palette_categories <- categories[names(palette_data)]
+  page_categories <- unique(unname(categories))
+  page_categories <- page_categories[page_categories %in% palette_categories]
+
+  stats::setNames(
+    lapply(page_categories, function(page_category) {
+      palette_data[palette_categories == page_category]
+    }),
+    page_categories
+  )
+}
+
+.delphi_print_palette_page <- function(palette_data, direction) {
+  grid <- n2mfrow(length(palette_data))
+  layout(matrix(
+    seq_len(prod(grid)),
+    nrow = grid[1],
+    ncol = grid[2],
+    byrow = TRUE
+  ))
+
+  for (name in names(palette_data)) {
+    colors <- palette_data[[name]]
     if (direction == -1) {
       colors <- rev(colors)
     }
@@ -110,5 +152,7 @@ print_delphi_palettes <- function(
     }
   }
 
-  invisible(names(palettes))
+  for (unused_panel in seq_len(prod(grid) - length(palette_data))) {
+    plot.new()
+  }
 }

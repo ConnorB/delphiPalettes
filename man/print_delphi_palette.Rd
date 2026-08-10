@@ -7,20 +7,19 @@
 print_delphi_palette(name = "mayfair", direction = 1)
 }
 \arguments{
-\item{name}{A single palette name, as returned by
-\code{names(delphi_palettes())}. Defaults to \code{"mayfair"}, the first palette.}
+\item{name}{A single palette name. Use \code{\link[=delphi_palettes]{delphi_palettes()}} to get palette
+names. The default is \code{"mayfair"}.}
 
-\item{direction}{Color order: \code{1} retains the original order and \code{-1}
-reverses it. Applied to the full palette before \code{n} selects a subset, so
-\code{n} colors with \code{direction = -1} are the \emph{last} \code{n} colors of the
-original order, reversed.}
+\item{direction}{The color order. Use \code{1} for the stored order. Use \code{-1} to
+reverse the stored order before this function selects \code{n} colors.}
 }
 \value{
-The selected hexadecimal colors, invisibly.
+The selected hexadecimal colors. The function returns them
+invisibly.
 }
 \description{
-Draw a palette with its name above the color swatches. The colors are also
-returned invisibly.
+Draws one palette with its name above the color swatches. Returns the colors
+invisibly.
 }
 \examples{
 print_delphi_palette()

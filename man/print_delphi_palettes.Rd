@@ -11,23 +11,24 @@ print_delphi_palettes(
 )
 }
 \arguments{
-\item{category}{An optional palette category. One of \code{classic}, \code{nature},
+\item{category}{An optional category. It must be one of \code{classic}, \code{nature},
 \code{keycaps}, \code{vintage}, \code{modern}, \code{bold}, \code{soft}, \code{monochrome}, \code{seasonal},
 or \code{artistic}.}
 
-\item{colorblind_friendly}{If \code{TRUE}, only return palettes that are
-colorblind-friendly. See \code{\link[=delphi_palette_colorblind]{delphi_palette_colorblind()}} for what that
-means.}
+\item{colorblind_friendly}{If \code{TRUE}, returns only palettes that pass
+\code{\link[=delphi_palette_colorblind]{delphi_palette_colorblind()}}.}
 
-\item{direction}{Color order: \code{1} retains the original order and \code{-1}
-reverses it. Applied to every palette shown.}
+\item{direction}{The color order. Use \code{1} for the stored order. Use \code{-1} to
+reverse every palette.}
 }
 \value{
-The names of the displayed palettes, invisibly.
+The names of the shown palettes. The function returns them
+invisibly.
 }
 \description{
-Draws a grid of palette swatches, one panel per palette, for browsing the
-collection -- or a filtered subset of it -- at a glance.
+Draws one panel for each palette. You can limit the result by category or
+color vision support. With the default filters, each category uses one
+graphics page.
 }
 \examples{
 print_delphi_palettes("keycaps")
