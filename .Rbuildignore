@@ -7,3 +7,9 @@
 ^README\.qmd$
 ^[.]?air[.]toml$
 ^\.vscode$
+^\.github$
+^AGENTS\.md$
+^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

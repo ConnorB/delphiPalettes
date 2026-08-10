@@ -6,6 +6,9 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/ConnorB/delphiPalettes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ConnorB/delphiPalettes/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/ConnorB/delphiPalettes/graph/badge.svg)](https://app.codecov.io/gh/ConnorB/delphiPalettes)
 <!-- badges: end -->
 
 A collection of 284 color palettes for data visualisation, ported from

@@ -11,6 +11,8 @@ export(scale_colour_delphi_c)
 export(scale_colour_delphi_d)
 export(scale_fill_delphi_c)
 export(scale_fill_delphi_d)
+import(rlang)
+importFrom(glue,glue)
 importFrom(grDevices,
   n2mfrow,
   rgb
@@ -24,3 +26,4 @@ importFrom(graphics,
   rect,
   text
 )
+importFrom(lifecycle,deprecated)
