@@ -1,0 +1,142 @@
+---
+format: gfm
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    fig.path: "man/figures/README-"
+    out.width: "100%"
+    dev: "svglite"
+    fig.ext: "svg"
+---
+
+# delphiPalettes
+
+A collection of `r length(delphiPalettes::delphi_palettes())` color palettes for data visualisation, ported from the [palette collection](https://delphi.tools/tools/palette-collection) at [delphi.tools](https://delphi.tools) — a suite of privacy-respecting, browser-based design tools created by [delphi](https://github.com/1612elphi/delphitools). All palette designs are delphi's; this package just makes them usable from R.
+
+## Installation
+
+delphiPalettes isn't on CRAN yet. Install the development version from GitHub:
+
+``` r
+# install.packages("pak")
+pak::pak("ConnorB/delphiPalettes")
+```
+
+```{r}
+#| label: setup
+library(delphiPalettes)
+```
+
+## A quick look
+
+`print_delphi_palettes()` draws a grid of palette swatches, one panel per palette. Pass a `category` or `colorblind_friendly = TRUE` to see a manageable slice of the collection:
+
+```{r}
+#| label: quick-look
+
+print_delphi_palettes("keycaps")
+```
+
+That's the `keycaps` category (`r length(delphiPalettes::delphi_palettes("keycaps"))` palettes); there are `r length(delphiPalettes::delphi_palettes())` in total across ten categories. Leave `category` unset to grid the whole collection at once (a large plot).
+
+## Usage
+
+Every palette has a lowercase, hyphenated name, like `"mayfair"` or `"grand-budapest"`. `delphi_palette()` returns one as a character vector of hex colors:
+
+```{r}
+delphi_palette("mayfair")
+```
+
+`print_delphi_palette()` draws it:
+
+```{r}
+#| label: print-example
+
+print_delphi_palette("mayfair")
+```
+
+Reverse the color order with `direction = -1`, or take a subset with `n`:
+
+```{r}
+delphi_palette("grand-budapest", direction = -1)
+delphi_palette("pride", n = 3)
+```
+
+Interpolate a palette to any number of colors with `type = "continuous"`:
+
+```{r}
+continuous <- delphi_palette("mayfair", n = 20, type = "continuous")
+continuous
+```
+
+```{r}
+#| label: continuous-example
+#| echo: false
+
+op <- par(mar = c(0, 0, 0, 0))
+image(
+  seq_along(continuous),
+  1,
+  as.matrix(seq_along(continuous)),
+  col = continuous,
+  xaxt = "n",
+  yaxt = "n",
+  xlab = "",
+  ylab = "",
+  bty = "n"
+)
+par(op)
+```
+
+### Use with ggplot2
+
+Discrete scales (`scale_color_delphi_d()` / `scale_fill_delphi_d()`) extend a palette by interpolation if there are more levels than colors; continuous scales (`scale_color_delphi_c()` / `scale_fill_delphi_c()`) interpolate smoothly. `scale_colour_*()` spellings are provided as aliases.
+
+```{r}
+#| label: ggplot-discrete
+#| message: false
+library(ggplot2)
+
+ggplot(iris, aes(Species, Sepal.Length, fill = Species)) +
+  geom_boxplot() +
+  scale_fill_delphi_d("pride") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r}
+#| label: ggplot-continuous
+
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Petal.Length)) +
+  geom_point(size = 2) +
+  scale_color_delphi_c("mayfair") +
+  theme_minimal()
+```
+
+### Categories
+
+Palettes are grouped into ten categories — `classic`, `nature`, `keycaps`, `vintage`, `modern`, `bold`, `soft`, `monochrome`, `seasonal`, and `artistic`. Pass one to `delphi_palettes()` to see just that group:
+
+```{r}
+names(delphi_palettes("keycaps"))
+```
+
+### Colorblind-friendly palettes
+
+Every palette has been checked with [colorblindcheck](https://cran.r-project.org/package=colorblindcheck) for whether it stays distinguishable under simulated deuteranopia, protanopia, and tritanopia. `delphi_palette_colorblind()` reports the verdict for one palette, and `delphi_palettes(colorblind_friendly = TRUE)` filters to only the `r length(delphiPalettes::delphi_palettes(colorblind_friendly = TRUE))` palettes that pass all three:
+
+```{r}
+delphi_palette_colorblind("dove")
+delphi_palette_colorblind("pinata")
+```
+
+```{r}
+#| label: colorblind-grid
+
+print_delphi_palettes(colorblind_friendly = TRUE)
+```
+
+## Credit
+
+The palette designs in this package are not original work — they're ported from the palette collection built into [delphi.tools](https://delphi.tools) ([source](https://github.com/1612elphi/delphitools)), created by delphi (Ruby Morgan Voigt). delphiPalettes just packages that collection for use in R (retrieval, interpolation, and colorblind-safety checks); all credit for the palettes themselves belongs to the original designer. delphitools is MIT licensed; its licence notice is reproduced alongside this package's own in [LICENSE.md](LICENSE.md).

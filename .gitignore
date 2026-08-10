@@ -1,0 +1,13 @@
+.Rproj.user
+Rplots.pdf
+tests/testthat/_problems/
+tests/testthat/testthat-problems.rds
+README.html
+
+/.quarto/
+**/*.quarto_ipynb
+.Rhistory
+.RData
+.httr-oauth
+.DS_Store
+.quarto

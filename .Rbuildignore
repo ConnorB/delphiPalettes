@@ -1,0 +1,9 @@
+^delphiPalettes\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^\.claude$
+^Rplots\.pdf$
+^data-raw$
+^README\.qmd$
+^[.]?air[.]toml$
+^\.vscode$

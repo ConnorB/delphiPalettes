@@ -1,0 +1,35 @@
+Package: delphiPalettes
+Title: Color Palettes Curated by 'delphi.tools'
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Connor", "Brown", role = c("aut", "cre"),
+           email = "ConnorBrown1996@gmail.com",
+           comment = c(ORCID = "0000-0002-9680-8930")),
+    person("Ruby Morgan", "Voigt", role = "dtc",
+           comment = "Original palette designs ported from https://delphi.tools (GitHub: 1612elphi)"))
+Description: A collection of color palettes for data visualisation, ported
+    from the palette collection at 'delphi.tools' <https://delphi.tools>, a
+    suite of privacy-respecting, browser-based design tools created by
+    delphi <https://github.com/1612elphi/delphitools>. Palettes are
+    organised into categories such as classic, nature, keycaps, vintage,
+    modern, bold, soft, monochrome, seasonal, and artistic, and can be
+    returned as discrete color vectors or interpolated to an arbitrary
+    number of colors. Includes a function to identify which palettes
+    remain distinguishable under simulated color vision deficiencies.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends:
+    R (>= 3.5)
+Imports:
+    cli,
+    grDevices,
+    graphics,
+    rlang
+Suggests:
+    colorblindcheck,
+    ggplot2,
+    svglite,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0.9000
