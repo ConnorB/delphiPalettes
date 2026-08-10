@@ -1,7 +1,7 @@
 # delphiPalettes
 
-delphiPalettes provides 284 color palettes from the
-[delphi.tools](https://delphi.tools) [palette
+[delphiPalettes](https://github.com/ConnorB/delphiPalettes) provides 284
+color palettes from the [delphi.tools](https://delphi.tools) [palette
 collection](https://delphi.tools/tools/palette-collection).
 
 ## Installation
@@ -191,9 +191,10 @@ colors.](reference/figures/README-colorblind-grid-1.svg)
 
 ## Credits
 
-[delphi.tools](https://delphi.tools) created the palette collection.
-Ruby Morgan Voigt created the palette designs. delphiPalettes makes
-these palettes available in R.
+The palette collection and designs are by Ruby Morgan Voigt, creator of
+[delphi.tools](https://delphi.tools/). The
+[delphiPalettes](https://github.com/ConnorB/delphiPalettes) package
+makes these palettes available in R.
 [delphitools](https://github.com/1612elphi/delphitools) uses the MIT
 license.
 [LICENSE.md](https://connorb.github.io/delphiPalettes/LICENSE.md)

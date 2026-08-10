@@ -2,12 +2,12 @@
 
 ## Authors
 
-- **Connor Brown**. Author, maintainer.
+- **[Connor Brown](https://connorb.github.io/)**. Author, maintainer.
   [](https://orcid.org/0000-0002-9680-8930)
 
-- **Ruby Morgan Voigt**. Data contributor.  
-  Original palette designs ported from https://delphi.tools (GitHub:
-  1612elphi)
+- **[Ruby Morgan Voigt](https://delphi.tools/)**. Data contributor.  
+  Original palette designs ported from
+  \[delphi.tools\](https://delphi.tools)
 
 ## Citation
 
