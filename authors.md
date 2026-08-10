@@ -6,8 +6,7 @@
   [](https://orcid.org/0000-0002-9680-8930)
 
 - **[Ruby Morgan Voigt](https://delphi.tools/)**. Data contributor.  
-  Original palette designs ported from
-  \[delphi.tools\](https://delphi.tools)
+  Original palette designs ported from \<<https://delphi.tools>\>
 
 ## Citation
 

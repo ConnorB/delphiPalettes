@@ -1,11 +1,10 @@
 # delphiPalettes: Color Palettes Curated by 'delphi.tools'
 
-Provides color palettes from the collection at 'delphi.tools'
-<https://delphi.tools>. delphi creates privacy-respecting design tools
-<https://github.com/1612elphi/delphitools>. The package groups palettes
-by category. It returns palette colors or interpolated colors. It also
-reports whether a palette keeps distinct colors under simulated color
-vision differences.
+Provides color palettes from the collection at
+\[delphi.tools\](https://delphi.tools), a suite of privacy-respecting,
+browser-based design tools. The package groups palettes by category. It
+returns palette colors or interpolated colors. It also reports whether a
+palette keeps distinct colors under simulated color vision differences.
 
 ## See also
 
@@ -30,4 +29,4 @@ Authors:
 Other contributors:
 
 - Ruby Morgan Voigt (Original palette designs ported from
-  https://delphi.tools (GitHub: 1612elphi)) \[data contributor\]
+  \<https://delphi.tools\>) \[data contributor\]
