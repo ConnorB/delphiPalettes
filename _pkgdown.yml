@@ -1,4 +1,9 @@
 url: https://connorb.github.io/delphiPalettes/
+authors:
+  Connor Brown:
+    href: https://connorb.github.io/
+  Ruby Morgan Voigt
+    href: https://delphi.tools/
 
 template:
   bootstrap: 5
