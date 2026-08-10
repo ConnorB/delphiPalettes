@@ -1,13 +1,10 @@
-# Check whether a palette is colorblind-friendly
+# Report palette color vision support
 
-Checks whether a palette is colorblind-friendly. A palette is
-colorblind-friendly when every color pair distinguishable in the
-original palette remains distinguishable under simulated deuteranopia,
-protanopia, and tritanopia, as determined by the colorblindcheck
-package. Verdicts are precomputed and shipped with the package; see
-`data-raw/colorblind-friendly.R` in the source repository to see how
-they were generated or to regenerate them after a palette's colors
-change.
+Reports whether a palette keeps every distinct color pair under
+simulated deuteranopia, protanopia, and tritanopia. The package stores
+this result for each palette.
+[`colorblindcheck::palette_check()`](https://jakubnowosad.com/colorblindcheck/reference/palette_check.html)
+creates the results in `data-raw/palettes.R`.
 
 ## Usage
 
@@ -19,7 +16,9 @@ delphi_palette_colorblind(name)
 
 - name:
 
-  A single palette name, as returned by `names(delphi_palettes())`.
+  A single palette name. Use
+  [`delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/delphi_palettes.md)
+  to get palette names.
 
 ## Value
 

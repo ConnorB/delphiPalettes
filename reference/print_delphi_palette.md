@@ -1,7 +1,7 @@
 # Print a Delphi palette
 
-Draw a palette with its name above the color swatches. The colors are
-also returned invisibly.
+Draws one palette with its name above the color swatches. Returns the
+colors invisibly.
 
 ## Usage
 
@@ -13,19 +13,18 @@ print_delphi_palette(name = "mayfair", direction = 1)
 
 - name:
 
-  A single palette name, as returned by `names(delphi_palettes())`.
-  Defaults to `"mayfair"`, the first palette.
+  A single palette name. Use
+  [`delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/delphi_palettes.md)
+  to get palette names. The default is `"mayfair"`.
 
 - direction:
 
-  Color order: `1` retains the original order and `-1` reverses it.
-  Applied to the full palette before `n` selects a subset, so `n` colors
-  with `direction = -1` are the *last* `n` colors of the original order,
-  reversed.
+  The color order. Use `1` for the stored order. Use `-1` to reverse the
+  stored order before this function selects `n` colors.
 
 ## Value
 
-The selected hexadecimal colors, invisibly.
+The selected hexadecimal colors. The function returns them invisibly.
 
 ## Examples
 

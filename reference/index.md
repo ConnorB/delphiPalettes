@@ -5,7 +5,7 @@
 - [`delphi_palette()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette.md)
   : Get a Delphi palette
 - [`delphi_palette_colorblind()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette_colorblind.md)
-  : Check whether a palette is colorblind-friendly
+  : Report palette color vision support
 - [`delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/delphi_palettes.md)
   : Delphi palette collection
 - [`print_delphi_palette()`](https://connorb.github.io/delphiPalettes/reference/print_delphi_palette.md)

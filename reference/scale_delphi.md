@@ -1,13 +1,11 @@
 # Delphi palette scales for ggplot2
 
-Discrete and continuous color/fill scales for ggplot2, built from a
-Delphi palette. `scale_color_delphi_d()` and `scale_fill_delphi_d()` map
-a discrete variable to a palette's colors, extending the palette by
-interpolation if there are more levels than the palette has colors.
-`scale_color_delphi_c()` and `scale_fill_delphi_c()` map a continuous
-variable through the palette, interpolating between its colors.
-`scale_colour_delphi_d()` and `scale_colour_delphi_c()` are aliases for
-the `scale_color_delphi_*()` functions.
+Uses Delphi palettes in
+[ggplot2](https://ggplot2.tidyverse.org/reference/ggplot2-package.html)
+scales. The discrete scales assign colors to factor levels. Extra factor
+levels cause the scales to interpolate colors. The continuous scales
+assign colors to numeric values. `scale_colour_delphi_d()` and
+`scale_colour_delphi_c()` are aliases.
 
 ## Usage
 
@@ -29,26 +27,24 @@ scale_colour_delphi_c(name = "mayfair", direction = 1, ...)
 
 - name:
 
-  A single palette name, as returned by `names(delphi_palettes())`.
-  Defaults to `"mayfair"`, the first palette.
+  A single palette name. Use
+  [`delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/delphi_palettes.md)
+  to get palette names. The default is `"mayfair"`.
 
 - direction:
 
-  Color order: `1` retains the original order and `-1` reverses it.
+  The color order. Use `1` for the stored order. Use `-1` to reverse the
+  stored order.
 
 - ...:
 
-  Passed on to
+  Arguments for
   [`ggplot2::discrete_scale()`](https://ggplot2.tidyverse.org/reference/discrete_scale.html)
-  (for the `_d()` scales) or
-  [`ggplot2::scale_color_gradientn()`](https://ggplot2.tidyverse.org/reference/scale_gradient.html)
-  /
-  [`ggplot2::scale_fill_gradientn()`](https://ggplot2.tidyverse.org/reference/scale_gradient.html)
-  (for the `_c()` scales). This package's own `name` argument occupies
-  the slot ggplot2 usually reserves for the scale title; set a legend
-  title with
+  or
+  [`ggplot2::scale_color_gradientn()`](https://ggplot2.tidyverse.org/reference/scale_gradient.html).
+  Use
   [`ggplot2::labs()`](https://ggplot2.tidyverse.org/reference/labs.html)
-  instead.
+  to set the legend title.
 
 ## Value
 

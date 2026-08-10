@@ -1,7 +1,7 @@
 # Delphi palette collection
 
-Return the curated Delphi palette collection. Palette names use
-lowercase hyphenated form, such as `mayfair` and `perito-moreno`.
+Returns the Delphi palette collection. Palette names use lowercase
+letters and hyphens. For example, use `mayfair` or `perito-moreno`.
 
 ## Usage
 
@@ -13,19 +13,18 @@ delphi_palettes(category = NULL, colorblind_friendly = FALSE)
 
 - category:
 
-  An optional palette category. One of `classic`, `nature`, `keycaps`,
-  `vintage`, `modern`, `bold`, `soft`, `monochrome`, `seasonal`, or
-  `artistic`.
+  An optional category. It must be one of `classic`, `nature`,
+  `keycaps`, `vintage`, `modern`, `bold`, `soft`, `monochrome`,
+  `seasonal`, or `artistic`.
 
 - colorblind_friendly:
 
-  If `TRUE`, only return palettes that are colorblind-friendly. See
-  [`delphi_palette_colorblind()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette_colorblind.md)
-  for what that means.
+  If `TRUE`, returns only palettes that pass
+  [`delphi_palette_colorblind()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette_colorblind.md).
 
 ## Value
 
-A named list of character vectors containing hexadecimal colors.
+A named list. Each element is a character vector of hexadecimal colors.
 
 ## Examples
 

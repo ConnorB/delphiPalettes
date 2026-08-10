@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Color Palettes Curated by delphi.tools • delphiPalettes</title>
-<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/Fira_Code-0.4.10/font.css" rel="stylesheet">
@@ -14,18 +14,18 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Color Palettes Curated by delphi.tools">
-<meta name="description" content="A collection of color palettes for data visualisation, ported from the palette collection at delphi.tools &lt;https://delphi.tools&gt;, a suite of privacy-respecting, browser-based design tools created by delphi &lt;https://github.com/1612elphi/delphitools&gt;. Palettes are organised into categories such as classic, nature, keycaps, vintage, modern, bold, soft, monochrome, seasonal, and artistic, and can be returned as discrete color vectors or interpolated to an arbitrary number of colors. Includes a function to identify which palettes remain distinguishable under simulated color vision deficiencies.">
-<meta property="og:description" content="A collection of color palettes for data visualisation, ported from the palette collection at delphi.tools &lt;https://delphi.tools&gt;, a suite of privacy-respecting, browser-based design tools created by delphi &lt;https://github.com/1612elphi/delphitools&gt;. Palettes are organised into categories such as classic, nature, keycaps, vintage, modern, bold, soft, monochrome, seasonal, and artistic, and can be returned as discrete color vectors or interpolated to an arbitrary number of colors. Includes a function to identify which palettes remain distinguishable under simulated color vision deficiencies.">
+<meta name="description" content="Provides color palettes from the collection at [delphi.tools](https://delphi.tools), a suite of privacy-respecting, browser-based design tools. The package groups palettes by category. It returns palette colors or interpolated colors. It also reports whether a palette keeps distinct colors under simulated color vision differences.">
+<meta property="og:description" content="Provides color palettes from the collection at [delphi.tools](https://delphi.tools), a suite of privacy-respecting, browser-based design tools. The package groups palettes by category. It returns palette colors or interpolated colors. It also reports whether a palette keeps distinct colors under simulated color vision differences.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">delphiPalettes</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,14 @@
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/ConnorB/delphiPalettes/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
       </ul>
 </div>
 
@@ -54,11 +62,12 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>A collection of 284 color palettes for data visualisation, ported from the <a href="https://delphi.tools/tools/palette-collection" class="external-link">palette collection</a> at <a href="https://delphi.tools" class="external-link">delphi.tools</a> — a suite of privacy-respecting, browser-based design tools created by <a href="https://github.com/1612elphi/delphitools" class="external-link">delphi</a>. All palette designs are delphi’s; this package just makes them usable from R.</p>
+<p>delphiPalettes provides 284 color palettes from the <a href="https://delphi.tools" class="external-link">delphi.tools</a> <a href="https://delphi.tools/tools/palette-collection" class="external-link">palette collection</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of delphiPalettes from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>Install the development version from <a href="https://github.com/ConnorB/delphiPalettes" class="external-link">GitHub</a>.</p>
+<p>Load the package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ConnorB/delphiPalettes"</span><span class="op">)</span></span></code></pre></div>
@@ -66,46 +75,46 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ConnorB/delphiPalettes" class="external-link">delphiPalettes</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="a-quick-look">A quick look<a class="anchor" aria-label="anchor" href="#a-quick-look"></a>
+<h2 id="browse-palettes">Browse palettes<a class="anchor" aria-label="anchor" href="#browse-palettes"></a>
 </h2>
-<p><code><a href="reference/print_delphi_palettes.html">print_delphi_palettes()</a></code> draws a grid of palette swatches, one panel per palette. Pass a <code>category</code> or <code>colorblind_friendly = TRUE</code> to see a manageable slice of the collection:</p>
-<!-- alt text is set via out.extra (a raw HTML `alt` attribute) rather than
-     fig-alt, which quarto's gfm renderer doesn't wire up to `alt`:
+<p><code><a href="reference/print_delphi_palettes.html">print_delphi_palettes()</a></code> draws one panel for each palette. Set <code>category</code> or <code>colorblind_friendly = TRUE</code> to limit the result.</p>
+<!-- The raw HTML `alt` attribute supplies the alt text. The Quarto GFM
+     renderer does not connect `fig-alt` to this attribute:
      https://github.com/quarto-dev/quarto-cli/issues/12456 -->
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/print_delphi_palettes.html">print_delphi_palettes</a></span><span class="op">(</span><span class="st">"keycaps"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-quick-look-1.svg" style="width:100.0%" alt='Grid of 34 color palette swatches, one panel per palette in the keycaps category, arranged 6 panels by 6 panels. Each panel is labeled with its palette name, such as "2600", "dualshot", "nautilus", and "vaporwave", above a horizontal strip of solid color blocks.'></p>
-<p>That’s the <code>keycaps</code> category (34 palettes); there are 284 in total across ten categories. Leave <code>category</code> unset to grid the whole collection at once (a large plot).</p>
+<p><img src="reference/figures/README-quick-look-1.svg" style="width:100.0%" alt='Palette grid with 34 panels in six rows and six columns. Each panel has a keycaps palette name. For example: "2600", "dualshot", "nautilus", and "vaporwave". Each panel has a horizontal strip of palette colors.'></p>
+<p>The <code>keycaps</code> category has 34 palettes. The collection has 284 palettes in ten categories. With no filters, <code><a href="reference/print_delphi_palettes.html">print_delphi_palettes()</a></code> draws one page per category.</p>
 </div>
 <div class="section level2">
-<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+<h2 id="get-palette-colors">Get palette colors<a class="anchor" aria-label="anchor" href="#get-palette-colors"></a>
 </h2>
-<p>Every palette has a lowercase, hyphenated name, like <code>"mayfair"</code> or <code>"grand-budapest"</code>. <code><a href="reference/delphi_palette.html">delphi_palette()</a></code> returns one as a character vector of hex colors:</p>
+<p>Each palette name uses lowercase letters and hyphens. For example, use <code>"mayfair"</code> or <code>"grand-budapest"</code>. <code><a href="reference/delphi_palette.html">delphi_palette()</a></code> returns a character vector of hexadecimal colors.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/delphi_palette.html">delphi_palette</a></span><span class="op">(</span><span class="st">"mayfair"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "#1a2634" "#2d4a3e" "#6b1c2a" "#c9b896" "#f5f0e6"</span></span></code></pre></div>
-<p><code><a href="reference/print_delphi_palette.html">print_delphi_palette()</a></code> draws it:</p>
+<p><code><a href="reference/print_delphi_palette.html">print_delphi_palette()</a></code> draws the palette.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/print_delphi_palette.html">print_delphi_palette</a></span><span class="op">(</span><span class="st">"mayfair"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-print-example-1.svg" style="width:100.0%" alt='Horizontal strip of 5 solid color blocks labeled "mayfair" above the strip. The colors move from dark navy blue and forest green through a deep maroon red to a warm tan and pale cream.'></p>
-<p>Reverse the color order with <code>direction = -1</code>, or take a subset with <code>n</code>:</p>
+<p><img src="reference/figures/README-print-example-1.svg" style="width:100.0%" alt='Palette strip with five color blocks. The label is "mayfair". The colors progress from dark navy and green to maroon, tan, and cream.'></p>
+<p>Set <code>direction = -1</code> to reverse the color order. Set <code>n</code> to return the first colors in the selected order.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/delphi_palette.html">delphi_palette</a></span><span class="op">(</span><span class="st">"grand-budapest"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "#f0c040" "#7b2d5b" "#f5e6d3" "#9c4070" "#d4658f"</span></span>
 <span><span class="fu"><a href="reference/delphi_palette.html">delphi_palette</a></span><span class="op">(</span><span class="st">"pride"</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "#e40303" "#ff8c00" "#ffed00"</span></span></code></pre></div>
-<p>Interpolate a palette to any number of colors with <code>type = "continuous"</code>:</p>
+<p>Set <code>type = "continuous"</code> to interpolate a palette. You must also set <code>n</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">continuous</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/delphi_palette.html">delphi_palette</a></span><span class="op">(</span><span class="st">"mayfair"</span>, n <span class="op">=</span> <span class="fl">20</span>, type <span class="op">=</span> <span class="st">"continuous"</span><span class="op">)</span></span>
 <span><span class="va">continuous</span></span>
 <span><span class="co">#&gt;  [1] "#1A2634" "#1E2D36" "#223538" "#263C3A" "#2A443C" "#30473C" "#3D3D38"</span></span>
 <span><span class="co">#&gt;  [8] "#4A3434" "#572A30" "#64202C" "#742C35" "#884D4C" "#9C6E62" "#B08E79"</span></span>
 <span><span class="co">#&gt; [15] "#C4AF90" "#CFC0A2" "#D9CCB3" "#E2D8C4" "#EBE4D5" "#F5F0E6"</span></span></code></pre></div>
-<p><img src="reference/figures/README-continuous-example-1.svg" style="width:100.0%" alt="Horizontal gradient bar showing the mayfair palette interpolated to 20 continuous color steps. The gradient blends smoothly from dark navy blue through forest green and deep maroon red to tan and pale cream, with no visible banding between adjacent steps."></p>
+<p><img src="reference/figures/README-continuous-example-1.svg" style="width:100.0%" alt='Palette strip with 20 adjacent color blocks from the "mayfair" palette. The colors progress from dark navy and green to maroon, tan, and cream.'></p>
 <div class="section level3">
 <h3 id="use-with-ggplot2">Use with ggplot2<a class="anchor" aria-label="anchor" href="#use-with-ggplot2"></a>
 </h3>
-<p>Discrete scales (<code><a href="reference/scale_delphi.html">scale_color_delphi_d()</a></code> / <code><a href="reference/scale_delphi.html">scale_fill_delphi_d()</a></code>) extend a palette by interpolation if there are more levels than colors; continuous scales (<code><a href="reference/scale_delphi.html">scale_color_delphi_c()</a></code> / <code><a href="reference/scale_delphi.html">scale_fill_delphi_c()</a></code>) interpolate smoothly. <code>scale_colour_*()</code> spellings are provided as aliases.</p>
+<p><code><a href="reference/scale_delphi.html">scale_color_delphi_d()</a></code> and <code><a href="reference/scale_delphi.html">scale_fill_delphi_d()</a></code> map factor levels to palette colors. If a factor has more levels than colors, these scales interpolate colors. <code><a href="reference/scale_delphi.html">scale_color_delphi_c()</a></code> and <code><a href="reference/scale_delphi.html">scale_fill_delphi_c()</a></code> map numeric values to palette colors. <code><a href="reference/scale_delphi.html">scale_colour_delphi_d()</a></code> and <code><a href="reference/scale_delphi.html">scale_colour_delphi_c()</a></code> use British spelling.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -114,18 +123,18 @@
 <span>  <span class="fu"><a href="reference/scale_delphi.html">scale_fill_delphi_d</a></span><span class="op">(</span><span class="st">"pride"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-ggplot-discrete-1.svg" style="width:100.0%" alt="Box plot chart. Iris species (setosa, versicolor, virginica) along the x-axis, sepal length along the y-axis. Each box is filled with a different color from the pride palette — red, orange, and yellow. Median sepal length rises from setosa through versicolor to virginica, and the spread of values widens across the same order."></p>
+<p><img src="reference/figures/README-ggplot-discrete-1.svg" style="width:100.0%" alt="Box plot. The x-axis has iris species. The y-axis has sepal length. The boxes use red, orange, and yellow from the pride palette. Median sepal length increases from setosa to virginica."></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, color <span class="op">=</span> <span class="va">Petal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/scale_delphi.html">scale_color_delphi_c</a></span><span class="op">(</span><span class="st">"mayfair"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-ggplot-continuous-1.svg" style="width:100.0%" alt="Scatter chart. Sepal length along the x-axis, sepal width along the y-axis, points colored on a continuous mayfair scale by petal length (ranging from 1 to 6.9). Points cluster loosely with no strong linear trend between sepal length and width, but color shifts from the dark end of the scale at low sepal length values to the pale end at high sepal length values, reflecting the strong correlation between petal length and sepal length."></p>
+<p><img src="reference/figures/README-ggplot-continuous-1.svg" style="width:100.0%" alt="Scatter chart. The x-axis has sepal length. The y-axis has sepal width. Color represents petal length from 1 to 6.9 on the mayfair scale. Petal length increases as sepal length increases."></p>
 </div>
 <div class="section level3">
 <h3 id="categories">Categories<a class="anchor" aria-label="anchor" href="#categories"></a>
 </h3>
-<p>Palettes are grouped into ten categories — <code>classic</code>, <code>nature</code>, <code>keycaps</code>, <code>vintage</code>, <code>modern</code>, <code>bold</code>, <code>soft</code>, <code>monochrome</code>, <code>seasonal</code>, and <code>artistic</code>. Pass one to <code><a href="reference/delphi_palettes.html">delphi_palettes()</a></code> to see just that group:</p>
+<p>The collection has ten categories: <code>classic</code>, <code>nature</code>, <code>keycaps</code>, <code>vintage</code>, <code>modern</code>, <code>bold</code>, <code>soft</code>, <code>monochrome</code>, <code>seasonal</code>, and <code>artistic</code>. Use <code><a href="reference/delphi_palettes.html">delphi_palettes()</a></code> to get one category.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="reference/delphi_palettes.html">delphi_palettes</a></span><span class="op">(</span><span class="st">"keycaps"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "2600"            "8008"            "9009"            "dualshot"       </span></span>
@@ -139,9 +148,9 @@
 <span><span class="co">#&gt; [33] "taro"            "honeywell"</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="colorblind-friendly-palettes">Colorblind-friendly palettes<a class="anchor" aria-label="anchor" href="#colorblind-friendly-palettes"></a>
+<h3 id="color-vision-support">Color vision support<a class="anchor" aria-label="anchor" href="#color-vision-support"></a>
 </h3>
-<p>Every palette has been checked with <a href="https://cran.r-project.org/package=colorblindcheck" class="external-link">colorblindcheck</a> for whether it stays distinguishable under simulated deuteranopia, protanopia, and tritanopia. <code><a href="reference/delphi_palette_colorblind.html">delphi_palette_colorblind()</a></code> reports the verdict for one palette, and <code>delphi_palettes(colorblind_friendly = TRUE)</code> filters to only the 21 palettes that pass all three:</p>
+<p><a href="https://jakubnowosad.com/colorblindcheck/" class="external-link">colorblindcheck</a> simulates deuteranopia, protanopia, and tritanopia. <code><a href="reference/delphi_palette_colorblind.html">delphi_palette_colorblind()</a></code> reports the stored result for one palette. <code><a href="reference/delphi_palettes.html">delphi_palettes()</a></code> returns the 21 palettes that pass all three simulations.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/delphi_palette_colorblind.html">delphi_palette_colorblind</a></span><span class="op">(</span><span class="st">"dove"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
@@ -149,13 +158,13 @@
 <span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/print_delphi_palettes.html">print_delphi_palettes</a></span><span class="op">(</span>colorblind_friendly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-colorblind-grid-1.svg" style="width:100.0%" alt='Grid of 21 color palette swatches, one panel per palette that passes deuteranopia, protanopia, and tritanopia checks, arranged 5 panels by 5 panels with 4 empty panels at the end. Each panel is labeled with its palette name, such as "hokitika", "obsidian", "porcelain", and "escher", above a horizontal strip of solid color blocks.'></p>
+<p><img src="reference/figures/README-colorblind-grid-1.svg" style="width:100.0%" alt="Palette grid with 21 panels in five rows and five columns. The palettes pass the three color vision simulations. Each panel has a palette name and a horizontal strip of palette colors."></p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="credit">Credit<a class="anchor" aria-label="anchor" href="#credit"></a>
+<h2 id="credits">Credits<a class="anchor" aria-label="anchor" href="#credits"></a>
 </h2>
-<p>The palette designs in this package are not original work — they’re ported from the palette collection built into <a href="https://delphi.tools" class="external-link">delphi.tools</a> (<a href="https://github.com/1612elphi/delphitools" class="external-link">source</a>), created by delphi (Ruby Morgan Voigt). delphiPalettes just packages that collection for use in R (retrieval, interpolation, and colorblind-safety checks); all credit for the palettes themselves belongs to the original designer. delphitools is MIT licensed; its licence notice is reproduced alongside this package’s own in <a href="LICENSE.html">LICENSE.md</a>.</p>
+<p><a href="https://delphi.tools" class="external-link">delphi.tools</a> created the palette collection. Ruby Morgan Voigt created the palette designs. delphiPalettes makes these palettes available in R. <a href="https://github.com/1612elphi/delphitools" class="external-link">delphitools</a> uses the MIT license. <a href="LICENSE.html">LICENSE.md</a> includes its license notice.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

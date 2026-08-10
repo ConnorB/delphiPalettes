@@ -1,7 +1,8 @@
 # Display a grid of Delphi palettes
 
-Draws a grid of palette swatches, one panel per palette, for browsing
-the collection – or a filtered subset of it – at a glance.
+Draws one panel for each palette. You can limit the result by category
+or color vision support. With the default filters, each category uses
+one graphics page.
 
 ## Usage
 
@@ -17,24 +18,23 @@ print_delphi_palettes(
 
 - category:
 
-  An optional palette category. One of `classic`, `nature`, `keycaps`,
-  `vintage`, `modern`, `bold`, `soft`, `monochrome`, `seasonal`, or
-  `artistic`.
+  An optional category. It must be one of `classic`, `nature`,
+  `keycaps`, `vintage`, `modern`, `bold`, `soft`, `monochrome`,
+  `seasonal`, or `artistic`.
 
 - colorblind_friendly:
 
-  If `TRUE`, only return palettes that are colorblind-friendly. See
-  [`delphi_palette_colorblind()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette_colorblind.md)
-  for what that means.
+  If `TRUE`, returns only palettes that pass
+  [`delphi_palette_colorblind()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette_colorblind.md).
 
 - direction:
 
-  Color order: `1` retains the original order and `-1` reverses it.
-  Applied to every palette shown.
+  The color order. Use `1` for the stored order. Use `-1` to reverse
+  every palette.
 
 ## Value
 
-The names of the displayed palettes, invisibly.
+The names of the shown palettes. The function returns them invisibly.
 
 ## Examples
 

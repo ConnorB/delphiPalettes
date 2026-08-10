@@ -1,16 +1,15 @@
 # delphiPalettes
 
-A collection of 284 color palettes for data visualisation, ported from
-the [palette collection](https://delphi.tools/tools/palette-collection)
-at [delphi.tools](https://delphi.tools) — a suite of privacy-respecting,
-browser-based design tools created by
-[delphi](https://github.com/1612elphi/delphitools). All palette designs
-are delphi’s; this package just makes them usable from R.
+delphiPalettes provides 284 color palettes from the
+[delphi.tools](https://delphi.tools) [palette
+collection](https://delphi.tools/tools/palette-collection).
 
 ## Installation
 
-You can install the development version of delphiPalettes from
-[GitHub](https://github.com/) with:
+Install the development version from
+[GitHub](https://github.com/ConnorB/delphiPalettes).
+
+Load the package.
 
 ``` r
 
@@ -23,34 +22,33 @@ pak::pak("ConnorB/delphiPalettes")
 library(delphiPalettes)
 ```
 
-## A quick look
+## Browse palettes
 
 [`print_delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/print_delphi_palettes.md)
-draws a grid of palette swatches, one panel per palette. Pass a
-`category` or `colorblind_friendly = TRUE` to see a manageable slice of
-the collection:
+draws one panel for each palette. Set `category` or
+`colorblind_friendly = TRUE` to limit the result.
 
 ``` r
 
 print_delphi_palettes("keycaps")
 ```
 
-![Grid of 34 color palette swatches, one panel per palette in the
-keycaps category, arranged 6 panels by 6 panels. Each panel is labeled
-with its palette name, such as "2600", "dualshot", "nautilus", and
-"vaporwave", above a horizontal strip of solid color
-blocks.](reference/figures/README-quick-look-1.svg)
+![Palette grid with 34 panels in six rows and six columns. Each panel
+has a keycaps palette name. For example: "2600", "dualshot", "nautilus",
+and "vaporwave". Each panel has a horizontal strip of palette
+colors.](reference/figures/README-quick-look-1.svg)
 
-That’s the `keycaps` category (34 palettes); there are 284 in total
-across ten categories. Leave `category` unset to grid the whole
-collection at once (a large plot).
+The `keycaps` category has 34 palettes. The collection has 284 palettes
+in ten categories. With no filters,
+[`print_delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/print_delphi_palettes.md)
+draws one page per category.
 
-## Usage
+## Get palette colors
 
-Every palette has a lowercase, hyphenated name, like `"mayfair"` or
-`"grand-budapest"`.
+Each palette name uses lowercase letters and hyphens. For example, use
+`"mayfair"` or `"grand-budapest"`.
 [`delphi_palette()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette.md)
-returns one as a character vector of hex colors:
+returns a character vector of hexadecimal colors.
 
 ``` r
 
@@ -59,20 +57,19 @@ delphi_palette("mayfair")
 ```
 
 [`print_delphi_palette()`](https://connorb.github.io/delphiPalettes/reference/print_delphi_palette.md)
-draws it:
+draws the palette.
 
 ``` r
 
 print_delphi_palette("mayfair")
 ```
 
-![Horizontal strip of 5 solid color blocks labeled "mayfair" above the
-strip. The colors move from dark navy blue and forest green through a
-deep maroon red to a warm tan and pale
+![Palette strip with five color blocks. The label is "mayfair". The
+colors progress from dark navy and green to maroon, tan, and
 cream.](reference/figures/README-print-example-1.svg)
 
-Reverse the color order with `direction = -1`, or take a subset with
-`n`:
+Set `direction = -1` to reverse the color order. Set `n` to return the
+first colors in the selected order.
 
 ``` r
 
@@ -82,8 +79,8 @@ delphi_palette("pride", n = 3)
 #> [1] "#e40303" "#ff8c00" "#ffed00"
 ```
 
-Interpolate a palette to any number of colors with
-`type = "continuous"`:
+Set `type = "continuous"` to interpolate a palette. You must also set
+`n`.
 
 ``` r
 
@@ -94,25 +91,25 @@ continuous
 #> [15] "#C4AF90" "#CFC0A2" "#D9CCB3" "#E2D8C4" "#EBE4D5" "#F5F0E6"
 ```
 
-![Horizontal gradient bar showing the mayfair palette interpolated to 20
-continuous color steps. The gradient blends smoothly from dark navy blue
-through forest green and deep maroon red to tan and pale cream, with no
-visible banding between adjacent
-steps.](reference/figures/README-continuous-example-1.svg)
+![Palette strip with 20 adjacent color blocks from the "mayfair"
+palette. The colors progress from dark navy and green to maroon, tan,
+and cream.](reference/figures/README-continuous-example-1.svg)
 
 ### Use with ggplot2
 
-Discrete scales
-([`scale_color_delphi_d()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
-/
-[`scale_fill_delphi_d()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md))
-extend a palette by interpolation if there are more levels than colors;
-continuous scales
-([`scale_color_delphi_c()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
-/
-[`scale_fill_delphi_c()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md))
-interpolate smoothly. `scale_colour_*()` spellings are provided as
-aliases.
+[`scale_color_delphi_d()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
+and
+[`scale_fill_delphi_d()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
+map factor levels to palette colors. If a factor has more levels than
+colors, these scales interpolate colors.
+[`scale_color_delphi_c()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
+and
+[`scale_fill_delphi_c()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
+map numeric values to palette colors.
+[`scale_colour_delphi_d()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
+and
+[`scale_colour_delphi_c()`](https://connorb.github.io/delphiPalettes/reference/scale_delphi.md)
+use British spelling.
 
 ``` r
 
@@ -125,12 +122,10 @@ ggplot(iris, aes(Species, Sepal.Length, fill = Species)) +
   theme(legend.position = "none")
 ```
 
-![Box plot chart. Iris species (setosa, versicolor, virginica) along the
-x-axis, sepal length along the y-axis. Each box is filled with a
-different color from the pride palette — red, orange, and yellow. Median
-sepal length rises from setosa through versicolor to virginica, and the
-spread of values widens across the same
-order.](reference/figures/README-ggplot-discrete-1.svg)
+![Box plot. The x-axis has iris species. The y-axis has sepal length.
+The boxes use red, orange, and yellow from the pride palette. Median
+sepal length increases from setosa to
+virginica.](reference/figures/README-ggplot-discrete-1.svg)
 
 ``` r
 
@@ -140,21 +135,18 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Petal.Length)) +
   theme_minimal()
 ```
 
-![Scatter chart. Sepal length along the x-axis, sepal width along the
-y-axis, points colored on a continuous mayfair scale by petal length
-(ranging from 1 to 6.9). Points cluster loosely with no strong linear
-trend between sepal length and width, but color shifts from the dark end
-of the scale at low sepal length values to the pale end at high sepal
-length values, reflecting the strong correlation between petal length
-and sepal length.](reference/figures/README-ggplot-continuous-1.svg)
+![Scatter chart. The x-axis has sepal length. The y-axis has sepal
+width. Color represents petal length from 1 to 6.9 on the mayfair scale.
+Petal length increases as sepal length
+increases.](reference/figures/README-ggplot-continuous-1.svg)
 
 ### Categories
 
-Palettes are grouped into ten categories — `classic`, `nature`,
-`keycaps`, `vintage`, `modern`, `bold`, `soft`, `monochrome`,
-`seasonal`, and `artistic`. Pass one to
+The collection has ten categories: `classic`, `nature`, `keycaps`,
+`vintage`, `modern`, `bold`, `soft`, `monochrome`, `seasonal`, and
+`artistic`. Use
 [`delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/delphi_palettes.md)
-to see just that group:
+to get one category.
 
 ``` r
 
@@ -170,16 +162,14 @@ names(delphi_palettes("keycaps"))
 #> [33] "taro"            "honeywell"
 ```
 
-### Colorblind-friendly palettes
+### Color vision support
 
-Every palette has been checked with
-[colorblindcheck](https://cran.r-project.org/package=colorblindcheck)
-for whether it stays distinguishable under simulated deuteranopia,
-protanopia, and tritanopia.
+[colorblindcheck](https://jakubnowosad.com/colorblindcheck/) simulates
+deuteranopia, protanopia, and tritanopia.
 [`delphi_palette_colorblind()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette_colorblind.md)
-reports the verdict for one palette, and
-`delphi_palettes(colorblind_friendly = TRUE)` filters to only the 21
-palettes that pass all three:
+reports the stored result for one palette.
+[`delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/delphi_palettes.md)
+returns the 21 palettes that pass all three simulations.
 
 ``` r
 
@@ -194,25 +184,20 @@ delphi_palette_colorblind("pinata")
 print_delphi_palettes(colorblind_friendly = TRUE)
 ```
 
-![Grid of 21 color palette swatches, one panel per palette that passes
-deuteranopia, protanopia, and tritanopia checks, arranged 5 panels by 5
-panels with 4 empty panels at the end. Each panel is labeled with its
-palette name, such as "hokitika", "obsidian", "porcelain", and "escher",
-above a horizontal strip of solid color
-blocks.](reference/figures/README-colorblind-grid-1.svg)
+![Palette grid with 21 panels in five rows and five columns. The
+palettes pass the three color vision simulations. Each panel has a
+palette name and a horizontal strip of palette
+colors.](reference/figures/README-colorblind-grid-1.svg)
 
-## Credit
+## Credits
 
-The palette designs in this package are not original work — they’re
-ported from the palette collection built into
-[delphi.tools](https://delphi.tools)
-([source](https://github.com/1612elphi/delphitools)), created by delphi
-(Ruby Morgan Voigt). delphiPalettes just packages that collection for
-use in R (retrieval, interpolation, and colorblind-safety checks); all
-credit for the palettes themselves belongs to the original designer.
-delphitools is MIT licensed; its licence notice is reproduced alongside
-this package’s own in
-[LICENSE.md](https://connorb.github.io/delphiPalettes/LICENSE.md).
+[delphi.tools](https://delphi.tools) created the palette collection.
+Ruby Morgan Voigt created the palette designs. delphiPalettes makes
+these palettes available in R.
+[delphitools](https://github.com/1612elphi/delphitools) uses the MIT
+license.
+[LICENSE.md](https://connorb.github.io/delphiPalettes/LICENSE.md)
+includes its license notice.
 
 # Package index
 
@@ -221,7 +206,7 @@ this package’s own in
 - [`delphi_palette()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette.md)
   : Get a Delphi palette
 - [`delphi_palette_colorblind()`](https://connorb.github.io/delphiPalettes/reference/delphi_palette_colorblind.md)
-  : Check whether a palette is colorblind-friendly
+  : Report palette color vision support
 - [`delphi_palettes()`](https://connorb.github.io/delphiPalettes/reference/delphi_palettes.md)
   : Delphi palette collection
 - [`print_delphi_palette()`](https://connorb.github.io/delphiPalettes/reference/print_delphi_palette.md)
