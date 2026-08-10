@@ -44,8 +44,18 @@ library(delphiPalettes)
 
 `print_delphi_palettes()` draws a grid of palette swatches, one panel per palette. Pass a `category` or `colorblind_friendly = TRUE` to see a manageable slice of the collection:
 
+<!-- alt text is set via out.extra (a raw HTML `alt` attribute) rather than
+     fig-alt, which quarto's gfm renderer doesn't wire up to `alt`:
+     https://github.com/quarto-dev/quarto-cli/issues/12456 -->
+
 ```{r}
 #| label: quick-look
+#| out.extra: >-
+#|   alt="Grid of 34 color palette swatches, one panel per palette in
+#|   the keycaps category, arranged 6 panels by 6 panels. Each panel
+#|   is labeled with its palette name, such as &quot;2600&quot;,
+#|   &quot;dualshot&quot;, &quot;nautilus&quot;, and &quot;vaporwave&quot;,
+#|   above a horizontal strip of solid color blocks."
 
 print_delphi_palettes("keycaps")
 ```
@@ -64,6 +74,11 @@ delphi_palette("mayfair")
 
 ```{r}
 #| label: print-example
+#| out.extra: >-
+#|   alt="Horizontal strip of 5 solid color blocks labeled
+#|   &quot;mayfair&quot; above the strip. The colors move from dark
+#|   navy blue and forest green through a deep maroon red to a warm
+#|   tan and pale cream."
 
 print_delphi_palette("mayfair")
 ```
@@ -85,6 +100,12 @@ continuous
 ```{r}
 #| label: continuous-example
 #| echo: false
+#| out.extra: >-
+#|   alt="Horizontal gradient bar showing the mayfair palette
+#|   interpolated to 20 continuous color steps. The gradient blends
+#|   smoothly from dark navy blue through forest green and deep
+#|   maroon red to tan and pale cream, with no visible banding
+#|   between adjacent steps."
 
 op <- par(mar = c(0, 0, 0, 0))
 image(
@@ -108,6 +129,13 @@ Discrete scales (`scale_color_delphi_d()` / `scale_fill_delphi_d()`) extend a pa
 ```{r}
 #| label: ggplot-discrete
 #| message: false
+#| out.extra: >-
+#|   alt="Box plot chart. Iris species (setosa, versicolor, virginica)
+#|   along the x-axis, sepal length along the y-axis. Each box is
+#|   filled with a different color from the pride palette — red,
+#|   orange, and yellow. Median sepal length rises from setosa through
+#|   versicolor to virginica, and the spread of values widens across
+#|   the same order."
 library(ggplot2)
 
 ggplot(iris, aes(Species, Sepal.Length, fill = Species)) +
@@ -119,6 +147,14 @@ ggplot(iris, aes(Species, Sepal.Length, fill = Species)) +
 
 ```{r}
 #| label: ggplot-continuous
+#| out.extra: >-
+#|   alt="Scatter chart. Sepal length along the x-axis, sepal width
+#|   along the y-axis, points colored on a continuous mayfair scale by
+#|   petal length (ranging from 1 to 6.9). Points cluster loosely with
+#|   no strong linear trend between sepal length and width, but color
+#|   shifts from the dark end of the scale at low sepal length values
+#|   to the pale end at high sepal length values, reflecting the
+#|   strong correlation between petal length and sepal length."
 
 ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Petal.Length)) +
   geom_point(size = 2) +
@@ -145,6 +181,14 @@ delphi_palette_colorblind("pinata")
 
 ```{r}
 #| label: colorblind-grid
+#| out.extra: >-
+#|   alt="Grid of 21 color palette swatches, one panel per palette
+#|   that passes deuteranopia, protanopia, and tritanopia checks,
+#|   arranged 5 panels by 5 panels with 4 empty panels at the end.
+#|   Each panel is labeled with its palette name, such as
+#|   &quot;hokitika&quot;, &quot;obsidian&quot;, &quot;porcelain&quot;,
+#|   and &quot;escher&quot;, above a horizontal strip of solid color
+#|   blocks."
 
 print_delphi_palettes(colorblind_friendly = TRUE)
 ```
