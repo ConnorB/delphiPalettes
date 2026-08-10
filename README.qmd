@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/ConnorB/delphiPalettes/graph/badge.svg)](https://app.codecov.io/gh/ConnorB/delphiPalettes)
 <!-- badges: end -->
 
-delphiPalettes provides `r length(delphiPalettes::delphi_palettes())` color palettes from the [delphi.tools](https://delphi.tools) [palette collection](https://delphi.tools/tools/palette-collection).
+`{delphiPalettes}` provides `r length(delphiPalettes::delphi_palettes())` color palettes from the [delphi.tools](https://delphi.tools) [palette collection](https://delphi.tools/tools/palette-collection).
 
 ## Installation
 
@@ -182,4 +182,4 @@ print_delphi_palettes(colorblind_friendly = TRUE)
 
 ## Credits
 
-[delphi.tools](https://delphi.tools) created the palette collection. Ruby Morgan Voigt created the palette designs. delphiPalettes makes these palettes available in R. [delphitools](https://github.com/1612elphi/delphitools) uses the MIT license. [LICENSE.md](LICENSE.md) includes its license notice.
+The palette collection and designs are by Ruby Morgan Voigt, creator of [delphi.tools](https://delphi.tools/). The `{delphiPalettes}` package makes these palettes available in R. [delphitools](https://github.com/1612elphi/delphitools) uses the MIT license. [LICENSE.md](LICENSE.md) includes its license notice.

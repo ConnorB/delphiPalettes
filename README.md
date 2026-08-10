@@ -11,7 +11,7 @@
 coverage](https://codecov.io/gh/ConnorB/delphiPalettes/graph/badge.svg)](https://app.codecov.io/gh/ConnorB/delphiPalettes)
 <!-- badges: end -->
 
-delphiPalettes provides 284 color palettes from the
+`{delphiPalettes}` provides 284 color palettes from the
 [delphi.tools](https://delphi.tools) [palette
 collection](https://delphi.tools/tools/palette-collection).
 
@@ -170,8 +170,8 @@ alt="Palette grid with 21 panels in five rows and five columns. The palettes pas
 
 ## Credits
 
-[delphi.tools](https://delphi.tools) created the palette collection.
-Ruby Morgan Voigt created the palette designs. delphiPalettes makes
-these palettes available in R.
+The palette collection and designs are by Ruby Morgan Voigt, creator of
+[delphi.tools](https://delphi.tools/). The `{delphiPalettes}` package
+makes these palettes available in R.
 [delphitools](https://github.com/1612elphi/delphitools) uses the MIT
 license. [LICENSE.md](LICENSE.md) includes its license notice.

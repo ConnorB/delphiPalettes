@@ -5,7 +5,7 @@ Authors@R: c(
     person("Connor", "Brown", , "ConnorBrown1996@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9680-8930")),
     person("Ruby Morgan", "Voigt", role = "dtc",
-           comment = "Original palette designs ported from https://delphi.tools (GitHub: 1612elphi)")
+           comment = "Original palette designs ported from [delphi.tools](https://delphi.tools)")
   )
 Description: Provides color palettes from the collection at
     [delphi.tools](https://delphi.tools), a suite of privacy-respecting,
