@@ -6,7 +6,7 @@
 \alias{delphiPalettes-package}
 \title{delphiPalettes: Color Palettes Curated by 'delphi.tools'}
 \description{
-Provides color palettes from the collection at 'delphi.tools' \url{https://delphi.tools}. delphi creates privacy-respecting design tools \url{https://github.com/1612elphi/delphitools}. The package groups palettes by category. It returns palette colors or interpolated colors. It also reports whether a palette keeps distinct colors under simulated color vision differences.
+Provides color palettes from the collection at [delphi.tools](https://delphi.tools), a suite of privacy-respecting, browser-based design tools. The package groups palettes by category. It returns palette colors or interpolated colors. It also reports whether a palette keeps distinct colors under simulated color vision differences.
 }
 \seealso{
 Useful links:
@@ -27,7 +27,7 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Ruby Morgan Voigt (Original palette designs ported from https://delphi.tools (GitHub: 1612elphi)) [data contributor]
+  \item Ruby Morgan Voigt (Original palette designs ported from <https://delphi.tools>) [data contributor]
 }
 
 }
