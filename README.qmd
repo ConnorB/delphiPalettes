@@ -1,28 +1,38 @@
 ---
-format: gfm
-knitr:
-  opts_chunk:
-    collapse: true
-    comment: "#>"
-    fig.path: "man/figures/README-"
-    out.width: "100%"
-    dev: "svglite"
-    fig.ext: "svg"
+format:
+  gfm:
+    default-image-extension: "svg"
 ---
 
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  fig.ext = "svg",
+  dev = "svglite"
+)
+```
+
 # delphiPalettes
+
+<!-- badges: start -->
+<!-- badges: end -->
 
 A collection of `r length(delphiPalettes::delphi_palettes())` color palettes for data visualisation, ported from the [palette collection](https://delphi.tools/tools/palette-collection) at [delphi.tools](https://delphi.tools) — a suite of privacy-respecting, browser-based design tools created by [delphi](https://github.com/1612elphi/delphitools). All palette designs are delphi's; this package just makes them usable from R.
 
 ## Installation
 
-delphiPalettes isn't on CRAN yet. Install the development version from GitHub:
+You can install the development version of delphiPalettes from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
 pak::pak("ConnorB/delphiPalettes")
 ```
-
 ```{r}
 #| label: setup
 library(delphiPalettes)
